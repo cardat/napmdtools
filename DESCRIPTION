@@ -1,13 +1,14 @@
-Package: cardatdbtools
+Package: napmdtools
 Type: Package
-Title: Database tools for use with the CARDAT PostGIS database server
-Version: 1.0
-Date: 2020-08-31
-Author: ivanhanigan
+Title: tools for use with the CARDAT NAPMD API
+Version: 0.1
+Date: 2023-11-04
+Author: ivanhanigan, grantwilliamson
 Maintainer: <ivan.hanigan@gmail.com>
 Description: database tools
 License: GPL (>= 2)
-Suggests: 
-    knitr,
-    rmarkdown
+Imports: 
+    data.table,
+    httr,
+    rlist
 VignetteBuilder: knitr
