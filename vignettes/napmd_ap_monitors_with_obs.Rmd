@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup, eval = F}
+```{r setup, eval = T}
 # remove.packages("napmdtools")
 # library(devtools)
 # install_github("cardat/napmdtools", build_vignettes = TRUE, force = TRUE)
