@@ -1,7 +1,7 @@
 
-\name{cardatdbtools-package}
-\alias{cardatdbtools-package}
-\alias{cardatdbtools}
+\name{napmdtools-package}
+\alias{napmdtools-package}
+\alias{napmdtools}
 \docType{package}
 \title{
 getPassword and connect2postgres
@@ -11,10 +11,10 @@ getPassword and connect2postgres~
 }
 \details{
 \tabular{ll}{
-Package: \tab cardatdbtools\cr
+Package: \tab napmdtools\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2020-08-31\cr
+Version: \tab 0.1\cr
+Date: \tab 2023-11-03\cr
 License: \tab GPL2\cr
 }
 ~~ An overview of how to use the package, including the most important functions ~~
@@ -22,7 +22,7 @@ License: \tab GPL2\cr
 \author{
 Who wrote it
 
-Maintainer: Who to complain to <ivan.hanigan@gmail.com>
+Maintainer: ivanhanigan <ivan.hanigan@gmail.com> and grantwilliamson
 
 }
 \references{

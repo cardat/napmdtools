@@ -1,8 +1,8 @@
 ---
-title: "cardat_ap_monitors_with_obs"
+title: "napmd_ap_monitors_with_obs"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{cardat_ap_monitors_with_obs}
+  %\VignetteIndexEntry{napmd_ap_monitors_with_obs}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,45 +15,18 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, eval = F}
-library(cardatdbtools)
-if(!require("RPostgreSQL")) install.packages("RPostgreSQL"); library("RPostgreSQL")
-
-username <- "postgis_user_name"
-hostip <- "swish4.tern.org.au"
-dbname <- "postgis_car"
-pwd <- get_pgpass(database = dbname,host = hostip,user = username,remote = TRUE,savePassword = TRUE)
-ch <- connect2postgres(hostip = pwd[,1],db = pwd[,3],user = pwd[,4],p = pwd[,5])
-rm(pwd) # remove the password
-
-# test
-# dbGetQuery(ch, "select * from public.dbsize ")
-
-#### create our study region ####
-## TODO Note that the table specified 'into' needs to change
-sql <- "select *
-into fileb2f1bad353_test_stdyreg
-from 
-abs_ste.ste_2011_aus
-where ste_name11 in ('New South Wales', 'Victoria', 'Australian Capital Territory')"
-
-dbSendQuery(ch, sql)
-
-#### find AP monitors ####
-# get all monitors within this region, and create it as a table in the database
-sql <- postgis_extract_points_in_polygon(poly_lyr = "fileb2f1bad353_test_stdyreg", 
-                                         out_table = "fileb2f1bad353_test")
-cat(sql)
-dbSendQuery(ch, sql)
-# get the station names
-dbGetQuery(ch, "select station, state from fileb2f1bad353_test")
-
-#### find those with data ####
-sql <- cardat_ap_monitors_with_obs(var = "o3", study_region_monitors = "fileb2f1bad353_test")
-cat(sql)
-dat_ap <- dbGetQuery(ch, sql)
-# with thanks to the data providers from NSW, ACT and VIC.
-
-# clean up
-dbSendQuery(ch, "drop table fileb2f1bad353_test_stdyreg")
-dbSendQuery(ch, "drop table fileb2f1bad353_test")
+# remove.packages("napmdtools")
+# library(devtools)
+# install_github("cardat/napmdtools", build_vignettes = TRUE, force = TRUE)
+library(napmdtools)
+stns <- list_air_pollution_monitors(state = "NSW")
+stns
+vars <- get_variables(453)
+vars
+times <- get_times(453, "pm25")
+times
+obs <- get_monitor(453, "pm25", "2019-08-20 14:00:00", "2019-12-31 14:00:00")
+obs
+slice <- get_slice_all("pm25", "2019-08-20 14:00:00", "NSW")
+slice
 ```
