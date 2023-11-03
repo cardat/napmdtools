@@ -10,7 +10,7 @@ req <- httr::GET("http://203.101.229.148/get_slice_all",query=list(variable=vari
                                                              time_utc = time_utc,
                                                              state=state,
                                                              datatype="JSON"))
-req <- httr:content(req,as="parsed")
+req <- httr::content(req,as="parsed")
 data <- data.table::rbindlist(req,fill=TRUE)
 return(data)
 }
