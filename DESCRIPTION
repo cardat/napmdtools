@@ -9,6 +9,5 @@ Description: database tools
 License: GPL (>= 2)
 Imports: 
     data.table,
-    httr,
-    rlist
+    httr
 VignetteBuilder: knitr

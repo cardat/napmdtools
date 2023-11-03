@@ -4,7 +4,7 @@ CAR's NAPMD API
 
 ```r
 # this is still in development so do the following
-remove.packages("napmdtools", lib="~/Rlibs")
+remove.packages("napmdtools")
 library(devtools)
 install_github("cardat/napmdtools", build_vignettes = TRUE)
 library(napmdtools)
