@@ -3,11 +3,11 @@ list_air_pollution_monitors <- function(
 ){
 
 # Retrieve all stations
-req <- GET("http://203.101.229.148/list_air_pollution_monitors",
+req <- httr::GET("http://203.101.229.148/list_air_pollution_monitors",
            query=list(state=state,
                       datatype="JSON"))
 
-req <- content(req,as="parsed")
-station_list <- rbindlist(req,fill=TRUE)
+req <- httr::content(req,as="parsed")
+station_list <- data.table::rbindlist(req,fill=TRUE)
 return(station_list)
 }
