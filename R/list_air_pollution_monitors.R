@@ -3,7 +3,7 @@ list_air_pollution_monitors <- function(
 ){
 
 # Retrieve all stations
-req <- httr::GET("http://203.101.229.148/list_air_pollution_monitors",
+req <- httr::GET("http://napmd.cloud.car-dat.org/list_air_pollution_monitors",
            query=list(state=state,
                       datatype="JSON"))
 

@@ -6,7 +6,7 @@ get_slice_all <- function(
     state="NSW"
 ){
 # Retrieve data a given hour
-req <- httr::GET("http://203.101.229.148/get_slice_all",query=list(variable=variable,
+req <- httr::GET("http://napmd.cloud.car-dat.org/get_slice_all",query=list(variable=variable,
                                                              time_utc = time_utc,
                                                              state=state,
                                                              datatype="JSON"))
