@@ -23,14 +23,16 @@ Centre for Air pollution, energy and health Research (2021): National Air Pollut
 
 ## Instructions for using API key
 
-It is not recommended to store your username and password in a script so instead create a private api.ini file in a private folder
+It is not recommended to store your username and password in a script so instead create a private api_key.R file in a private folder
 
-1. create the private folder and create a text file in there called api.ini
-2. get your username and password from the data curator.
-    username = my_name
-    password = my_password
-3. put this in to your .gitignore file `private/api.ini`
-4. use the R::raster package 
-    `api_key <- raster::readIniFile("private/api.ini", aslist = T)`
+1. create the private folder and create a text file in there called `private/api_key.R`
+2. get your username and password from the data curator and paste it in there.
+    `api_key <- list(
+      username = "my_name",
+      password = "my_password"
+    )`
+3. put this in to your .gitignore file `private/api_key.R`
+4. use this in your R script
+    `source("private/api_key.R")`
 5. use this in the functions, e.g.
-    `list_air_pollution_monitors(state = "NSW", username = api_key$username, password = api_key$password)`
+    `list_air_pollution_monitors(state = "NSW", username = api_key[[1]]$username, password = api_key[[1]]$password)`
