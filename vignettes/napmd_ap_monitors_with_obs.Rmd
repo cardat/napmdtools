@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 # library(devtools)
 # install_github("cardat/napmdtools", build_vignettes = TRUE, force = TRUE)
 library(napmdtools)
-stns <- list_air_pollution_monitors(state = "NSW")
+stns <- list_air_pollution_monitors(state = "NSW", username = api_key$username, password = api_key$password)
 stns
 vars <- get_variables(453)
 vars
