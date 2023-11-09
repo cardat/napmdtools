@@ -24,7 +24,7 @@ library(napmdtools)
 "
 1. create the private folder and create a text file in there called `private/api_key.yaml`
 2. get your username and password from the data curator and paste it in there.
-    `username: 'my_name',
+    `username: 'my_name'
      password: 'my_password'
     `
 3. put this in to your .gitignore file `private/api_key.yaml`

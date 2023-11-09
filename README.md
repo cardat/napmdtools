@@ -27,10 +27,13 @@ It is not recommended to store your username and password in a script so instead
 
 1. create the private folder and create a text file in there called `private/api_key.yaml`
 2. get your username and password from the data curator and paste it in there.
-    `username: 'my_name',
-     password: 'my_password'
-    `
+
+```
+username: 'my_name',
+password: 'my_password'
+```
+
 3. put this in to your .gitignore file `private/api_key.yaml`
 4. use this to read it into your session `yaml::read_yaml('private/api_key.yaml')`
 5. use this in the functions, e.g.
-    `list_air_pollution_monitors(state = "NSW", username = api_key[[1]]$username, password = api_key[[1]]$password)`
+    `list_air_pollution_monitors(state = "NSW", username = api_key$username, password = api_key$password)`
