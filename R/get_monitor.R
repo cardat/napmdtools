@@ -21,6 +21,8 @@ get_monitor <- function(
                                                              datatype="JSON"))
   req <- httr::content(req,as="parsed")
   data <- data.table::rbindlist(req,fill=TRUE)
-  data$date_time_utc <- as.POSIXct(data$date_time_utc)
+  data$date_time_utc <- as.POSIXct(data$date_time_utc, 
+                                   tz = "UTC", 
+                                   format = "%Y-%m-%d %H:%M:%S")
   return(data)
 }
