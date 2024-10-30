@@ -13,6 +13,13 @@ req <- httr::GET("https://napmd.cloud.car-dat.org/list_air_pollution_monitors",
                       password=password,
                       datatype="JSON"))
 
+# catch if error
+if (req$status_code != 200) {
+  parse_data <- httr::content(req, as = "parsed")
+  warning(sprintf("%s: %s", req$status_code, parse_data$error))
+  return(NULL)
+}
+
 req <- httr::content(req,as="parsed")
 station_list <- data.table::rbindlist(req,fill=TRUE)
 return(station_list)
