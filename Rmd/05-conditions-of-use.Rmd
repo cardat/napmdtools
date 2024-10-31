@@ -1,0 +1,143 @@
+# Conditions of use
+
+**The National Air Pollution Monitoring Database data are not to be on-shared without permission from the Centre for Safe Air.**
+
+Whenever you use this database in publications, please **use the following citation**:
+
+> Centre for Safe Air, 2021. National
+> Air Pollution Monitoring Database, derived from regulatory monitor
+> data from NSW DPE, Vic EPA, Qld DES, SA EPA, WA DWER, Tas EPA, NT
+> EPA, and ACT Health. Downloaded from the 
+> Centre for Safe Air [accessed YYYY-MM-DD] DOI 10.17605/OSF.IO/JXD98
+
+Please note the data has been provided by Australian state and territory governments, and are therefore subject to differing licences, conditions of use and disclaimers. When using data please abide by the the relevant licensing and conditions of us set out by each agency, in addition to the conditions of use of NAPMD above. 
+
+A summary of individual agency licences and conditions of use are shown below.
+
+## ACT Health {#act-conditions}
+
+**Data licence**
+
+ACT air pollution data has been provided to NAPMD under [Creative Commons By Attribution 4.0 International license (CC BY 4.0)][cc-by-4.0-int].
+
+**Disclaimer**
+
+Unverified data in this dataset. The data displayed may have undergone no or only preliminary quality assurance checks. These data may require modification as a result of calibration changes, power failures, instrument failures etc.
+
+**Conditions of use**
+
+ACT Health would like to be informed prior to any on-sharing of data. Additionally, they request any publications using their data are submitted for review by ACT Health, and any comments are considered by the authors prior to publication. 
+
+## NSW DCCEEW {#nsw-conditions}
+
+See [source licence](https://www.airquality.nsw.gov.au/data-licence-statement).
+
+**Data licence**
+
+Air quality data on this facility are openly accessible and do not require registration or a subscription key. Users must note though that any data accessed are owned by DCCEEW and protected by Crown Copyright, unless credited otherwise. These are licensed under the [Creative Commons By Attribution 4.0 International license (CC BY 4.0)][cc-by-4.0-int], subject to the State of New South Wales Crown requirements.
+
+**Data disclaimer - 1994+**
+
+The data on this facility come from the NSW Air Quality Monitoring Network using various types of monitoring equipment and methods. Data for recent time periods have undergone only preliminary quality checks and may be adjusted later as part of our validation process to account for instrument errors, power interruptions and other technical issues.
+
+**Disclaimer - pre-1994 historic data**
+
+Historic data has not undergone the same level of quality assurance as the data that is publicly available via DPIE's website and API. It is recommended that these data are used in consultation with NSW DPIE.
+
+**Conditions of use**
+
+Please attribute publications to Climate and Atmospheric Science Branch, Department of Planning Industry and Environment (DPIE) of New South Wales Government, linking to website as relevant.
+
+If you are using this data in scientific publications, please cite the following: 
+
+>Riley M, Kirkwood J, Jiang N, Ross G and Scorgie Y. 'Air quality monitoring in NSW: From long term trend monitoring to integrated urban services'. *Air Quality & Climate Change*. 2020; 54(1): 44-51.
+
+## NT EPA {#nt-conditions}
+
+**Data licence**
+
+These data are provided for the purposes of private study, research, criticism or review, as permitted under the [Copyright Act 1968](https://www.legislation.gov.au/Details/C2019C00042). See NT EPA's [copyright, disclaimer and privacy statement](https://nt.gov.au/page/copyright-disclaimer-and-privacy) for further information. 
+
+**Disclaimer**
+
+Although source data are normally validated one month after being recorded, they are still subject to change and the records in the NAPMD may not reflect these changes.
+
+## Qld DESI {#qld-conditions}
+
+**Data licence**
+
+All post-2011 Queensland data is provided under [Creative Commons By Attribution 4.0 International license (CC BY 4.0)][cc-by-4.0-int].
+
+The license on pre-2012 data has not been determined, and should not be used except with permission from the data owner. 
+
+**Disclaimer**
+
+The materials available on or through this website are distributed by the Queensland Government as an information source only.
+
+To the maximum extent permitted by law, the State of Queensland makes no statement, representation, or warranty about the quality, accuracy, context, completeness, availability or suitability for any purpose of, and you should not rely on, any materials available on or through this website.
+
+The Queensland Government disclaims, to the maximum extent permitted by law, all responsibility and all liability (including without limitation, liability in negligence) for all expenses, losses, damages and costs you or any other person might incur for any reason including as a result of the data being in any way inaccurate, out of context, incomplete, unavailable, not up to date or unsuitable for any purpose.
+
+**Restricted data**
+
+The location of a couple of AP monitors have been withheld as they are located on private property. If the locations of these monitors is needed, please contact the data owner.
+
+## SA EPA {#sa-conditions}
+
+**Data licence**
+
+Data is provided under [Creative Commons By Attribution 4.0 International license (CC BY 4.0)][cc-by-4.0-int]. 
+
+**Disclaimer**
+
+Recent air quality data comes directly from our air monitoring stations and is indicative only. Data will be validated at a later date, and may be adjusted due to instruments not working correctly, power failures or other technical issues.
+
+Negative values occur from time to time and are a result of interferents such as moisture and semi volatile compounds in combination with the noise of the instrument.
+
+## EPA Tasmania {#tas-conditions}
+
+**Data licence**
+
+Data is provided under [Creative Commons By Attribution 4.0 International license (CC BY 4.0)][cc-by-4.0-int]. 
+
+**Disclaimer**
+
+[BLANkET monitor data][https://epa.tas.gov.au/environment/air/monitoring-air-pollution/monitoring-data/reports-and-historical-data/historical-blanket-data] (from DustTrak monitors) is 'level 0' data. It is automatically produced, has no human intervention, and only a few automated QA checks.
+
+**Conditions of use**
+
+Users are required to [contact EPA Tas][tas-contact] before using their data in publications or projects to ensure the data is fit for purpose. Users agree to provide appropriate credit to EPA Tasmania (attribution) as the creator of the data, link the licence and show the changes made to the data.  
+
+## EPA Victoria {#vic-conditions}
+
+**Data Licence**
+
+Data is provided under [Creative Commons By Attribution 4.0 International license (CC BY 4.0)][cc-by-4.0-int].
+
+**Disclaimer**
+
+By accepting or accessing EPA Data (Data) you are deemed to have accepted and are bound by these Terms of Use. You acknowledge that rights to the Data are granted by the EPA on a non-exclusive, non-commercial basis and that the Data is made available on an ‘as is’ basis. If you use or rely on the Data you do so at your own risk and acknowledge that the Data:
+
+ - is subject to the inherent uncertainties of scientific and technical research and may not be accurate, current or complete; 
+ - and does not constitute professional, scientific or technical advice.
+ 
+To the maximum extent permitted by law: 
+ - the Data is provided without warranties of any kind either expressed or implied, including but not limited to implied warranties of fitness for a particular purpose, and the EPA disclaims all such warranties; and 
+ - the EPA accepts no liability whatsoever for any loss, damage or injury suffered by you or any third party that may arise from or in connection with the granting of access to, use or disclosure of or reliance on the Data. 
+
+These Terms of Use are governed by and are to be construed in accordance with the laws of the State of Victoria.
+
+
+## WA DWER {#wa-conditions}
+
+**Data licence**
+
+WA DWER historical air pollution data is not publicly accessible and is available by request only.
+
+**Disclaimer**
+
+The Western Australian Department of Water and Environmental Regulation (DWER) provides these data to you on the basis that you and/or your company accept full responsibility for their accuracy and for the use to which the data are put. DWER accepts no responsibility for the accuracy of the information or its suitability for your work. Any reference to the information in documents produced by you or your company must be accompanied by a statement of your acceptance of responsibility along the above lines. 
+
+**Conditions of use**
+
+The data must not be forwarded or sold to a third party without the written consent of the Senior Manager, Air Quality Branch, Department of Water and Environmental Regulation. These data are made available to CSA and non-CSA researchers strictly for non-commercial use for research projects.

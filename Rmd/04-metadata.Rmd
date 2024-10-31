@@ -1,0 +1,202 @@
+# Metadata
+
+## Spatial coverage
+
+```{r tbl-num-stns}
+if(params$retrieve_fr_db){
+  dt.num_stns <- dbGetQuery(ch, "select state, COUNT(*) as n_stns 
+                       from air_pollution_monitors.ap_monitor_locations_master 
+                       group by state")
+  setDT(dt.num_stns)
+  saveRDS(dt.num_stns, file.path(workdir, "dt_num_stns.rds"))
+} else {
+  dt.num_stns <- readRDS(file.path(workdir, "dt_num_stns.rds"))
+}
+
+knitr::kable(dt.num_stns[order(state)], 
+             col.names = c("State", "Number of stations"),
+             caption = "Number of stations (including both historical and current)", 
+             format = "html") %>% 
+  kable_styling(full_width = F)
+
+```
+
+
+Locations of stations (see counts in Table \@ref(tab:tbl-num-stns)) (coordinates are approximate):
+
+```{r map_stns}
+if(params$retrieve_fr_db) {
+  dt.stns <- dbGetQuery(
+    ch,
+    "select station, lat, lon
+           from air_pollution_monitors.ap_monitor_locations_master"
+  )
+  setDT(dt.stns)
+  dt.stns <- dt.stns[!is.na(lat) & !is.na(lon)]
+  dt.stns[, `:=`(lat = lat + rnorm(1) * 0.05,
+                 lon = lon + rnorm(1) * 0.05)]
+  
+  sf.stns <- st_as_sf(dt.stns, coords = c("lon", "lat"), crs = 4283)
+  sf.stns <- st_transform(sf.stns, 4326)
+  saveRDS(sf.stns, file.path(workdir, "sf_stns.rds"))
+} else {
+  sf.stns <- readRDS(file.path(workdir, "sf_stns.rds"))
+}
+
+leaflet() %>% addTiles() %>% addCircles(data = sf.stns)
+```
+
+## Temporal coverage
+
+```{r tbl-temporal-coverage}
+if(params$retrieve_fr_db){
+  dt.time.hrly <- dbGetQuery(
+    ch,
+    "select state, variable, min(year) as start_year, max(year) as end_year
+           from air_pollution_monitors.ap_monitor_data_master
+           group by state, variable"
+  )
+  dt.time.dly <- dbGetQuery(
+    ch,
+    "select state, variable, min(year) as start_year, max(year) as end_year
+           from air_pollution_monitors.ap_monitor_data_daily_master
+           group by state, variable"
+  )
+  setDT(dt.time.hrly)
+  setDT(dt.time.dly)
+  
+  dt.time_cov <- merge(dt.time.hrly[, .(state,
+                                        variable,
+                                        start_year_hrly = start_year,
+                                        end_year_hrly = end_year)], dt.time.dly[, .(state,
+                                                                                    variable,
+                                                                                    start_year_dly = start_year,
+                                                                                    end_year_dly = end_year)], all = T)
+  dt.time_cov[, `:=`(state = as.factor(state), variable = as.factor(variable))]
+  saveRDS(dt.time_cov, file.path(workdir, "dt_time_cov.rds"))
+} else {
+  dt.time_cov <- readRDS(file.path(workdir, "dt_time_cov.rds"))
+}
+
+DT::datatable(
+  dt.time_cov,
+  colnames = c(
+    "State",
+    "Variable",
+    "Start year (hourly)",
+    "End year (hourly)",
+    "Start year (daily)",
+    "End year (daily)"
+  ),
+  filter = "top",
+  rownames = F,
+  options = list(pageLength = 10),
+  caption = "Temporal coverage by station and variable"
+)
+
+```
+
+## Variables
+
+```{r tbl-var-unit}
+if(params$retrieve_fr_db) {
+  dt.vars <- dbGetQuery(
+    ch,
+    "select variable, units from air_pollution_monitors.ap_monitor_data_master
+    group by variable, units"
+  )
+  setDT(dt.vars)
+  
+  saveRDS(dt.vars, file.path(workdir, "dt_vars.rds"))
+} else {
+  dt.vars <- readRDS(file.path(workdir, "dt_vars.rds"))
+}
+
+dt.vars_description <- fread(file.path(workdir, "vars.csv"))
+dt.vars <- merge(dt.vars, dt.vars_description, all.x = T)
+
+DT::datatable(dt.vars, 
+              caption = "Variables and their units used in NAPMD",
+              rownames = F)
+```
+
+## Date and time fields
+
+For hourly observation data, the hour indicates the beginning of the averaging period (i.e. hour 0 marks the average between 00:00 and 01:00). The year, date and hour fields are in local time, without daylight savings. Timezones are as follows:
+
+- UTC+08:00: WA
+- UTC+09:30: NT, SA
+- UTC+10:00: ACT, NSW, QLD, VIC, TAS
+
+All times are shown in UTC in the date_time_utc field, stored as a *timestamp with time zone* in PostgreSQL. Please note that some programs will automatically convert the UTC timezone to the local system timezone on retrieval from the database. Ensure that you are working in your desired time zone when manipulating this field.
+
+## Standardisation
+
+### Variable and units
+
+All variable and unit names have been expressed in alphanumeric characters only with no whitespace. For some variables, reporting units differ across agencies. Conversion factors are shown in Table \@ref(tab:tbl-unit-conversion).
+
+```{r tbl-unit-conversion}
+ls.unit_conv <- list(data.table(from = "ppb", to = "ppm", conversion = "ppm = 0.001 * ppb"),
+                     data.table(from = "pphm", to = "ppm", conversion = "ppm = 0.01 * pphm"),
+                     data.table(from = "10^-4_per_m", to = "Mm^-1", conversion = "Mm^-1 = 100 * 10^-4_per_m"),
+                     data.table(from = "atm", to = "hPa", conversion = "hPa = 1013.25 * atm"),
+                     data.table(from = "mbar", to = "hPa", conversion = "hPa = mbar"),
+                     data.table(from = "km/hr", to = "m/s", conversion = "m/s = 1000/(60 * 60) * km/hr"))
+  
+dt.unit_conv <- rbindlist(ls.unit_conv)
+knitr::kable(dt.unit_conv, caption = "Conversion factors used for standardisation.")
+```
+
+### Time basis (hour-ending/starting)
+
+The National Air Pollution Monitor Database converts all hourly data to be in 0-23 hour-beginning format (i.e. 0 represents midnight to 1am on the date specified). For different states and territories the source data can vary.
+
+|State     | Data source                    | Time basis          |
+| -------- | ------------------------------ | ------------------- |
+| ACT      | All data                       | 0-23 hour-ending    |
+| NSW      | All data                       | 1-24 hour-ending    |
+| NT       | All data                       | 1-24 hour-ending    |
+| Qld      | Open Portal downloads          | 0-23 hour-beginning |
+|          | Historical database extracts   | 1-24 hour-ending    |
+| SA       | Non-historic data              | 0-23 hour-ending    |
+|          | Spreadsheets pre-2003 (gases)  | 0-23 hour-beginning |
+|          | Spreadsheets pre-2005 (PM2.5)  | 0-23 hour-beginning |
+| Tas      |  N/A                           | N/A                 |
+| Vic      | All data                       | 0-23 hour-beginning |
+| WA       | All data                       | 0-23 hour-ending    |
+
+### Station names
+
+Station names have been generally cleaned by converting to lowercase with underscores, removing all non-alphanumeric characters and whitespace. Names may differ substantially from the original station name where:
+- two stations are co-located (e.g. one station is a regular air quality monitor, the second is part of a rural network or sensor network)
+- a station has moved locations (the agency regards the station is the same station but NAPMD will list the new location under a new station name, typically suffixed '_post_YYYY_MM_DD', with the date it moved)
+
+Note that the station name within a state will be unique, however different states may use the same station name (e.g. Richmond in both NSW and Victoria).
+
+Source identifiers are kept with the station names where possible so that they can be cross-referenced with the original data. Use the source identifier to find continuous data for stations which have moved locations over time.
+
+### Station locations
+
+Please note that NAPMD station coordinates may differ from the source data coordinates. This may be for a variety of reasons:
+
+- The station has moved and the source data coordinates only show the most recent location
+- The station has been more accurately geocoded than the source data coordinates (typically with the help of Google Maps and Google Earth)
+- The coordinates are set to 0, 0 (hidden) in the source data and have been removed entirely in NAPMD
+
+
+<!-- ## Measurement method ### -->
+<!-- Measurement method is a field that is used to determine the different measurement equipment or provide clarity on the variable. Currently this has not been standardised for all variables. -->
+<!-- #### PM2.5 TEOMs and BAMs #### -->
+<!-- Across Australia there has been a general move from TEOMs to BAMs over time. -->
+
+<!-- **ACT:** 2014 (inclusive) and onwards: BAM. Otherwise TEOM. -->
+
+<!-- **NSW:** 2013-2016 (inclusive) and onwards: BAM. Otherwise TEOM. -->
+
+<!-- **QLD:** Always used TEOM. -->
+
+<!-- **SA:** 2016 (inclusive) and onwards: BAM. Otherwise TEOM. -->
+
+<!-- **VIC:** 2014 (inclusive) and onwards: BAM. Otherwise TEOM. -->
+

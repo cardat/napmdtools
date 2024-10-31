@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Metadata | The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-10-31)</title>
+  <meta name="description" content="4 Metadata | The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-10-31)" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Metadata | The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-10-31)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Metadata | The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-10-31)" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="napmd-database-infrastructure.html"/>
+<link rel="next" href="conditions-of-use.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.1</b> Acknowledgements and thanks</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#funding"><i class="fa fa-check"></i><b>1.2</b> Funding</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="news.html"><a href="news.html"><i class="fa fa-check"></i><b>2</b> News</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="news.html"><a href="news.html#section"><i class="fa fa-check"></i><b>2.1</b> 2023-11-19</a></li>
+<li class="chapter" data-level="2.2" data-path="news.html"><a href="news.html#section-1"><i class="fa fa-check"></i><b>2.2</b> 2022-01-20</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="napmd-database-infrastructure.html"><a href="napmd-database-infrastructure.html"><i class="fa fa-check"></i><b>3</b> NAPMD Database Infrastructure</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="napmd-database-infrastructure.html"><a href="napmd-database-infrastructure.html#general-overview"><i class="fa fa-check"></i><b>3.1</b> General overview</a></li>
+<li class="chapter" data-level="3.2" data-path="napmd-database-infrastructure.html"><a href="napmd-database-infrastructure.html#table-structure"><i class="fa fa-check"></i><b>3.2</b> Table structure</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="metadata.html"><a href="metadata.html"><i class="fa fa-check"></i><b>4</b> Metadata</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="metadata.html"><a href="metadata.html#spatial-coverage"><i class="fa fa-check"></i><b>4.1</b> Spatial coverage</a></li>
+<li class="chapter" data-level="4.2" data-path="metadata.html"><a href="metadata.html#temporal-coverage"><i class="fa fa-check"></i><b>4.2</b> Temporal coverage</a></li>
+<li class="chapter" data-level="4.3" data-path="metadata.html"><a href="metadata.html#variables"><i class="fa fa-check"></i><b>4.3</b> Variables</a></li>
+<li class="chapter" data-level="4.4" data-path="metadata.html"><a href="metadata.html#date-and-time-fields"><i class="fa fa-check"></i><b>4.4</b> Date and time fields</a></li>
+<li class="chapter" data-level="4.5" data-path="metadata.html"><a href="metadata.html#standardisation"><i class="fa fa-check"></i><b>4.5</b> Standardisation</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="metadata.html"><a href="metadata.html#variable-and-units"><i class="fa fa-check"></i><b>4.5.1</b> Variable and units</a></li>
+<li class="chapter" data-level="4.5.2" data-path="metadata.html"><a href="metadata.html#time-basis-hour-endingstarting"><i class="fa fa-check"></i><b>4.5.2</b> Time basis (hour-ending/starting)</a></li>
+<li class="chapter" data-level="4.5.3" data-path="metadata.html"><a href="metadata.html#station-names"><i class="fa fa-check"></i><b>4.5.3</b> Station names</a></li>
+<li class="chapter" data-level="4.5.4" data-path="metadata.html"><a href="metadata.html#station-locations"><i class="fa fa-check"></i><b>4.5.4</b> Station locations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="conditions-of-use.html"><a href="conditions-of-use.html"><i class="fa fa-check"></i><b>5</b> Conditions of use</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="conditions-of-use.html"><a href="conditions-of-use.html#act-conditions"><i class="fa fa-check"></i><b>5.1</b> ACT Health</a></li>
+<li class="chapter" data-level="5.2" data-path="conditions-of-use.html"><a href="conditions-of-use.html#nsw-conditions"><i class="fa fa-check"></i><b>5.2</b> NSW DCCEEW</a></li>
+<li class="chapter" data-level="5.3" data-path="conditions-of-use.html"><a href="conditions-of-use.html#nt-conditions"><i class="fa fa-check"></i><b>5.3</b> NT EPA</a></li>
+<li class="chapter" data-level="5.4" data-path="conditions-of-use.html"><a href="conditions-of-use.html#qld-conditions"><i class="fa fa-check"></i><b>5.4</b> Qld DESI</a></li>
+<li class="chapter" data-level="5.5" data-path="conditions-of-use.html"><a href="conditions-of-use.html#sa-conditions"><i class="fa fa-check"></i><b>5.5</b> SA EPA</a></li>
+<li class="chapter" data-level="5.6" data-path="conditions-of-use.html"><a href="conditions-of-use.html#tas-conditions"><i class="fa fa-check"></i><b>5.6</b> EPA Tasmania</a></li>
+<li class="chapter" data-level="5.7" data-path="conditions-of-use.html"><a href="conditions-of-use.html#vic-conditions"><i class="fa fa-check"></i><b>5.7</b> EPA Victoria</a></li>
+<li class="chapter" data-level="5.8" data-path="conditions-of-use.html"><a href="conditions-of-use.html#wa-conditions"><i class="fa fa-check"></i><b>5.8</b> WA DWER</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="using-napmd.html"><a href="using-napmd.html"><i class="fa fa-check"></i><b>6</b> Using NAPMD</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="using-napmd.html"><a href="using-napmd.html#accessing-the-database"><i class="fa fa-check"></i><b>6.1</b> Accessing the database</a></li>
+<li class="chapter" data-level="6.2" data-path="using-napmd.html"><a href="using-napmd.html#cite-the-data-and-report-outcomes"><i class="fa fa-check"></i><b>6.2</b> Cite the data and report outcomes</a></li>
+<li class="chapter" data-level="6.3" data-path="using-napmd.html"><a href="using-napmd.html#using-the-database"><i class="fa fa-check"></i><b>6.3</b> Using the database</a></li>
+<li class="chapter" data-level="6.4" data-path="using-napmd.html"><a href="using-napmd.html#questions-about-the-data-and-reporting-improbable-values"><i class="fa fa-check"></i><b>6.4</b> Questions about the data, and reporting improbable values</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="resources-and-links.html"><a href="resources-and-links.html"><i class="fa fa-check"></i><b>7</b> Resources and Links</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="resources-and-links.html"><a href="resources-and-links.html#cardat-platform"><i class="fa fa-check"></i><b>7.1</b> CARDAT platform</a></li>
+<li class="chapter" data-level="7.2" data-path="resources-and-links.html"><a href="resources-and-links.html#national-air-technical-advisory-group-natag"><i class="fa fa-check"></i><b>7.2</b> National Air Technical Advisory Group (NATAG)</a></li>
+<li class="chapter" data-level="7.3" data-path="resources-and-links.html"><a href="resources-and-links.html#air-quality-legislation"><i class="fa fa-check"></i><b>7.3</b> Air Quality Legislation</a></li>
+<li class="chapter" data-level="7.4" data-path="resources-and-links.html"><a href="resources-and-links.html#stateterritory-live-air-quality"><i class="fa fa-check"></i><b>7.4</b> State/Territory Live Air Quality</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="querying-napmd.html"><a href="querying-napmd.html"><i class="fa fa-check"></i><b>A</b> Querying NAPMD</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="querying-napmd.html"><a href="querying-napmd.html#using-api-with-r-napmdtools-package"><i class="fa fa-check"></i><b>A.1</b> Using API with R <code>napmdtools</code> package</a></li>
+<li class="chapter" data-level="A.2" data-path="querying-napmd.html"><a href="querying-napmd.html#via-db-connection-with-r-rpostgresql-package"><i class="fa fa-check"></i><b>A.2</b> Via DB connection with R <code>RPostgreSQL</code> package</a></li>
+<li class="chapter" data-level="A.3" data-path="querying-napmd.html"><a href="querying-napmd.html#example-sql-queries"><i class="fa fa-check"></i><b>A.3</b> Example SQL queries</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="querying-napmd.html"><a href="querying-napmd.html#geospatial-data-station-locations"><i class="fa fa-check"></i><b>A.3.1</b> Geospatial data (station locations)</a></li>
+<li class="chapter" data-level="A.3.2" data-path="querying-napmd.html"><a href="querying-napmd.html#stations-by-parameter"><i class="fa fa-check"></i><b>A.3.2</b> Stations by parameter</a></li>
+<li class="chapter" data-level="A.3.3" data-path="querying-napmd.html"><a href="querying-napmd.html#observation-data"><i class="fa fa-check"></i><b>A.3.3</b> Observation data</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-10-31)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="metadata" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Metadata<a href="metadata.html#metadata" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="spatial-coverage" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Spatial coverage<a href="metadata.html#spatial-coverage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tbl-num-stns">Table 4.1: </span>Number of stations (including both historical and current)
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+State
+</th>
+<th style="text-align:right;">
+Number of stations
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+ACT
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NSW
+</td>
+<td style="text-align:right;">
+118
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NT
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+QLD
+</td>
+<td style="text-align:right;">
+67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SA
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TAS
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VIC
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WA
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+</tbody>
+</table>
+<p>Locations of stations (see counts in Table <a href="metadata.html#tab:tbl-num-stns">4.1</a>) (coordinates are approximate):</p>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-e483104076af86c63266" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-e483104076af86c63266">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircles","args":[[-35.34234000660584,-35.27734693660584,-35.47526549660584,-14.52227096660584,-12.48169296660584,-12.52396016660584,-12.56466996660584,-29.50173996660585,-33.78380996660584,-34.30172796660585,-31.08303996660585,-31.94637996660585,-35.78033996660584,-35.42043996660585,-33.16494996660585,-30.56538996660585,-32.25199296660585,-34.63477840660585,-33.73970196660584,-34.36318559660585,-28.88906996660585,-31.50470196660585,-33.97582996660584,-33.92940796660584,-32.85372854660584,-33.90038830660585,-33.85644936660584,-30.37534896660584,-32.31012496660585,-32.32859791660584,-30.35525496660584,-32.63091396660585,-34.09952296660585,-33.78970996660585,-35.17253996660585,-32.70559896660585,-33.92128609660585,-32.96660042660584,-32.52926996660585,-32.23428396660584,-33.76726296660585,-33.94119096660584,-32.53375646660584,-31.03872254660585,-34.79148996660584,-36.10878896660584,-33.45876396660584,-32.69282896660584,-33.57800196660585,-33.33126696660585,-32.95133116660585,-33.71317917660585,-31.16682896660584,-34.53585996660585,-30.09313996660585,-32.05813996660584,-34.49993996660584,-34.23163996660585,-31.54063996660584,-33.83684996660585,-32.18271696660585,-32.94187323660584,-32.58163296660585,-34.11303996660585,-34.63658196660585,-33.12339996660585,-33.33588895660585,-34.47400799660585,-35.16134696660585,-32.95895071660585,-33.85209750660584,-32.64405096660585,-32.58674596660585,-32.61357630660584,-33.67337784660585,-33.98871385660585,-33.85119274660585,-34.10863961660585,-32.98811885660584,-34.12781167660584,-33.98828913660584,-33.83808555660585,-34.53092430660585,-33.97311933660585,-33.94852608660585,-34.12359664660585,-34.09866022660584,-33.97459993660585,-33.89503996660584,-33.82223046660584,-35.61443996660584,-32.27643996660584,-35.09373996660585,-30.35526996660585,-30.56538996660585,-33.11173996660585,-34.88233996660585,-34.10543996660584,-35.43473996660585,-33.65853996660584,-36.51073996660585,-29.96413996660585,-29.54663996660585,-34.76193996660584,-34.54661406660585,-33.85644936660584,-34.30575996660585,-34.59824996660585,-33.54844996660584,-35.16108396660584,-33.18463996660584,-35.68653996660585,-34.48473996660584,-30.09283996660585,-35.17713996660584,-33.99533996660585,-30.90863996660585,-33.03553996660585,-36.15403996660584,-34.52533996660585,-31.03881596660585,-28.88123996660585,-29.67763096660585,-36.96468996660585,-36.27953996660585,-23.63893996660585,-23.57773996660585,-23.44023996660584,-27.67213996660585,-27.83163996660585,-23.61963996660585,-19.32003996660585,-19.31583996660585,-20.00653996660585,-23.89723996660585,-23.89203996660585,-19.64083996660585,-27.03433996660585,-27.60033996660584,-28.06903996660585,-28.05313996660585,-27.83163996660585,-23.90123996660585,-20.77363996660585,-22.05643996660585,-19.30783996660585,-26.36933996660585,-23.91953996660585,-19.37813996660585,-27.30513996660585,-20.78333996660585,-19.31113996660585,-19.30713996660585,-21.21643996660585,-23.99767496660585,-27.53430396660585,-26.62388457660585,-23.87698696660584,-27.52233296660584,-23.92704224660585,-23.84801941660585,-27.42827296660585,-27.47349896660585,-27.46325696660585,-27.60740982660585,-19.34414134660584,-27.54171368660585,-28.01793901660585,-23.83130728660585,-27.48648065660585,-27.49486996660585,-19.98777296660585,-27.30777296660585,-22.06813996660584,-27.55345562660585,-28.00101496660585,-27.55436255660585,-27.59271994660585,-27.25044783660585,-27.70978745660585,-26.74866633660585,-27.80997449660585,-27.82778104660585,-27.47743344660585,-27.66943551660584,-27.60105796660585,-27.53433996660585,-33.25173467960585,-33.08053597160575,-33.22810328560585,-33.09305633660575,-33.25307206960584,-33.23867958260585,-33.23061794960574,-35.39160999560575,-34.84005323960584,-37.88232892360585,-32.56694643860575,-35.00069399660585,-34.98579446660585,-34.89558796660585,-34.97835578660585,-34.91896567660584,-34.84822979660584,-34.75543190660584,-35.19189133660585,-41.16493996660584,-41.47593996660584,-40.90693996660585,-41.04893996660584,-41.21593996660584,-41.48693996660585,-42.13793996660585,-41.29493996660585,-41.57993996660585,-41.58693996660585,-41.55993996660585,-41.63493996660585,-41.65193996660584,-41.35993996660584,-41.52193996660585,-41.30693996660585,-41.21893996660584,-41.20693996660584,-41.37693996660585,-41.69493996660584,-41.98493996660584,-42.35693996660584,-42.87593996660585,-42.56593996660585,-42.74093996660584,-42.83293996660585,-42.89893996660584,-42.91193996660584,-42.91793996660584,-43.06693996660584,-43.08693996660585,-43.22693996660585,-43.21593996660584,-41.24176396660584,-41.16837396660585,-36.83522996660584,-38.24340616660584,-37.73610996660585,-37.90095996660585,-37.77931996660585,-37.76324996660585,-38.24445996660585,-37.88013996660585,-37.87923996660584,-38.04148666660585,-38.20359596660585,-37.87902496660585,-37.83536672660585,-38.36132296660585,-37.90158318660585,-37.88567688660584,-37.97049343660584,-38.04280329660585,-37.86452296660585,-37.86181763660585,-37.76334196660584,-38.23048766660585,-38.28641535660584,-37.88030066660585,-37.83208527660585,-37.86090596660585,-38.29647614660585,-36.30791996660584,-37.98324989660585,-37.86463962660584,-38.25133637660585,-37.81342955660585,-35.06793996660585,-33.41683996660585,-28.82643996660585,-30.84713996660584,-32.59473996660584,-31.75223996660585,-32.01293996660584,-32.23473996660584,-32.31963996660585,-33.39851996660585,-33.70516796660585,-31.93270196660585,-31.88333396660585,-31.73522996660585,-32.16750596660584],[149.0513462153353,148.9632047153353,149.0138583153353,132.1906163153353,130.8131703153353,130.7704509153353,130.8680773153353,141.9768293153353,150.6236293153353,150.7433453153353,150.1888293153353,152.4284393153353,150.1070293153353,150.4026293153353,151.4723993153353,151.5814873153353,150.5931773153353,150.7023674153353,150.8235423153353,150.5004491153353,153.2133293153353,152.7963543153353,150.8523493153353,151.1331663153353,151.5808396153353,151.1312490153353,150.9176343153353,149.7491713153353,150.8010143153353,150.8055425153353,153.0379543153353,150.9470883153353,151.0621133153353,150.3087093153353,147.2806793153353,150.9558193153353,151.0837720153353,151.6831655153353,151.0117483153353,150.8039903153353,150.2193683153353,150.9626673153353,150.7999807153353,150.1805665153353,149.6440453153353,146.8597293153353,149.4944123153353,151.0478453153353,150.5482503153353,149.0143013153353,151.5900368153353,150.7675190153353,150.8343573153353,150.7976793153353,145.8718293153353,141.3888293153353,142.8088293153353,142.1208293153353,145.7488293153353,150.8255793153353,150.3791283153353,151.6482534153353,150.9816993153353,150.7320293153353,150.7098713153353,147.1481493153353,151.3522526153353,150.8071576153353,147.2803413153353,151.7041340153353,150.6866271153353,151.1287793153353,151.0699373153353,151.0984790153353,150.6671649153353,151.1626400153353,150.8340061153353,150.4180112153353,151.6794587153353,150.7020076153353,150.8271286153353,151.0708317153353,150.7392693153353,151.0556112153353,150.9658896153353,150.7153654153353,150.6100005153353,150.6817731153353,148.5739493153353,151.0375784153353,144.8658293153353,148.4978293153353,143.4088293153353,153.0379293153353,151.5815293153353,144.0738293153353,147.4298293153353,140.9828293153353,140.4578293153353,142.4508293153353,144.2388293153353,139.6568293153353,149.7668293153353,146.4338293153353,150.8120462153353,150.9176343153353,145.9897293153353,144.7843093153353,145.4445893153353,147.2802273153353,148.1638293153353,146.3948293153353,147.4318293153353,148.0428293153353,141.9238293153353,147.1158293153353,142.9938293153353,141.4088293153353,143.2748293153353,141.4928293153353,150.1804953153353,153.1766293153353,152.8831393153353,149.8187593153353,149.0529293153353,148.9938293153353,148.0848293153353,153.0821293153353,152.7873293153353,153.1212293153353,148.8005293153353,146.7506293153353,146.7462293153353,147.9680293153353,150.9826293153353,151.1737293153353,147.3257293153353,149.8720293153353,152.2541293153353,152.8415293153353,152.8453293153353,153.1212293153353,151.1715293153353,139.4118293153353,147.9911293153353,146.7271293153353,152.8734293153353,151.1903293153353,146.7620293153353,150.0872293153353,139.4175293153353,146.7455293153353,146.7502293153353,149.0747293153353,151.2704203153353,152.9478613153353,150.6194031153353,151.0734963153353,153.0069113153353,151.1414133153353,151.0775956153353,151.5131413153353,152.9574433153353,153.0725253153353,151.8731110153353,146.7012894153353,152.9518815153353,153.3221448153353,151.0257836153353,153.0779682153353,153.0693913153353,148.1973293153353,153.1189963153353,147.9618293153353,152.9545589153353,153.2854213153353,152.9548103153353,152.9132296153353,152.9545381153353,152.6937356153353,153.0242236153353,152.5708582153353,152.9499600153353,153.0405878153353,153.0556557153353,152.9185903153353,152.9479293153353,137.9397267583353,137.4530548253353,137.9235586813353,137.5059272053353,137.9177504373353,137.9235859583353,137.9296724133353,138.3715256973353,138.6563796153353,140.6872183213353,137.7066760393353,138.4689396153353,138.5207798153353,138.4161913153353,138.5849449153353,138.5427575153353,138.4176916153353,138.6155840153353,138.4149945153353,145.8028293153353,147.0438293153353,145.0528293153353,145.6378293153353,146.0658293153353,146.2578293153353,145.4728293153353,146.3398293153353,146.5778293153353,146.7548293153353,146.9868293153353,147.0918293153353,147.0418293153353,146.8708293153353,147.0678293153353,147.1368293153353,147.4348293153353,147.7198293153353,148.1698293153353,147.8868293153353,147.4108293153353,147.2918293153353,147.7368293153353,147.8328293153353,146.8558293153353,146.9738293153353,147.1908293153353,147.2348293153353,147.3238293153353,146.8598293153353,146.9698293153353,146.8448293153353,146.9918293153353,146.2654913153353,146.7560943153353,144.2199293153353,146.1781606153353,144.8855293153353,144.7814293153353,144.9774293153353,144.4868293153353,146.2125293153353,144.8123293153353,144.7653293153353,145.1457357153353,144.3467244153353,144.7669453153353,144.9504050153353,146.3347423153353,144.7827421153353,145.0521697153353,144.9178189153353,145.1185182153353,144.8898303153353,144.7925670153353,144.4867823153353,144.2901053153353,146.3442883153353,144.9239839153353,145.2482942153353,144.7415283153353,146.3071997153353,146.2631293153353,144.6764958153353,144.8842332153353,146.4513016153353,144.6854712153353,117.8078293153353,116.0668293153353,114.5521293153353,121.4016293153353,115.6104293153353,116.2384293153353,115.6818293153353,115.7178293153353,115.6683293153353,115.5631473153353,115.2718533153353,115.8971933153353,115.7026933153353,115.6169843153353,115.7545623153353],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[-43.22693996660585,-12.48169296660584],"lng":[114.5521293153353,153.3221448153353]}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="temporal-coverage" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Temporal coverage<a href="metadata.html#temporal-coverage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-d89814b832acc75a6338" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d89814b832acc75a6338">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;ACT&quot;,&quot;NSW&quot;,&quot;NT&quot;,&quot;QLD&quot;,&quot;SA&quot;,&quot;TAS&quot;,&quot;VIC&quot;,&quot;WA&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;air_pressure&quot;,&quot;api&quot;,&quot;benzene&quot;,&quot;co&quot;,&quot;co2&quot;,&quot;coarse_pm&quot;,&quot;dew_point&quot;,&quot;formaldehyde&quot;,&quot;humidity&quot;,&quot;methane&quot;,&quot;neph&quot;,&quot;nh3&quot;,&quot;no&quot;,&quot;no2&quot;,&quot;non_methane_hydrocarbons&quot;,&quot;nox&quot;,&quot;o3&quot;,&quot;pb&quot;,&quot;pm10&quot;,&quot;pm10_black_carbon&quot;,&quot;pm25&quot;,&quot;pmtsp&quot;,&quot;rain&quot;,&quot;so2&quot;,&quot;solar&quot;,&quot;temperature&quot;,&quot;temperature_internal&quot;,&quot;toluene&quot;,&quot;wind_direction&quot;,&quot;wind_direction_std_dev&quot;,&quot;wind_speed&quot;,&quot;wind_speed_scalar&quot;,&quot;wind_speed_std_dev&quot;,&quot;xylenes&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1979\" data-max=\"2020\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1989\" data-max=\"2021\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1990\" data-max=\"2010\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1995\" data-max=\"2020\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","caption":"<caption>Temporal coverage by station and variable<\/caption>","data":[["ACT","ACT","ACT","ACT","ACT","ACT","ACT","ACT","ACT","ACT","NSW","NSW","NSW","NSW","NSW","NSW","NSW","NSW","NSW","NSW","NSW","NSW","NSW","NSW","NSW","NSW","NSW","NSW","NT","NT","NT","NT","NT","NT","NT","NT","NT","NT","NT","NT","NT","NT","NT","NT","NT","NT","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","QLD","SA","SA","SA","SA","SA","SA","SA","SA","SA","SA","SA","TAS","TAS","VIC","VIC","VIC","VIC","VIC","VIC","VIC","VIC","VIC","VIC","VIC","VIC","VIC","VIC","VIC","VIC","WA","WA","WA","WA","WA","WA","WA","WA","WA","WA"],["air_pressure","co","no","no2","nox","o3","pm10","pm25","temperature","temperature_internal","co","humidity","neph","nh3","no","no2","nox","o3","pm10","pm25","pmtsp","rain","so2","solar","temperature","wind_direction","wind_direction_std_dev","wind_speed","air_pressure","co","coarse_pm","dew_point","humidity","no","no2","nox","o3","pm10","pm25","rain","so2","solar","temperature","wind_direction","wind_direction_std_dev","wind_speed","air_pressure","benzene","co","co2","formaldehyde","humidity","methane","neph","no","no2","nox","o3","pm10","pm10_black_carbon","pm25","pmtsp","rain","so2","solar","temperature","toluene","wind_direction","wind_direction_std_dev","wind_speed","wind_speed_std_dev","xylenes","air_pressure","co","no","no2","nox","o3","pm10","pm25","pmtsp","so2","temperature","pm10","pm25","api","co","neph","no","no2","non_methane_hydrocarbons","nox","o3","pb","pm10","pm25","so2","temperature","wind_direction","wind_speed","wind_speed_scalar","air_pressure","co","coarse_pm","no","no2","nox","o3","pm10","pm25","so2"],[2011,2011,1996,1996,1996,1996,2012,2013,2011,2011,1994,1994,1994,2018,1994,1994,1994,1994,1994,1996,2005,2017,1994,2014,1999,1999,1999,1994,2011,2011,2020,2020,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2017,2011,2019,2019,2010,2018,2019,2019,2019,2019,2010,2010,2010,2010,2010,2019,2010,2019,2019,2010,2019,2019,2019,2019,2019,2019,2019,2019,2019,2015,2015,2002,2015,2002,2014,2003,2014,2002,2019,null,null,1990,1979,2020,1979,1979,1983,1979,1979,null,1994,2014,1990,1979,2019,2019,2019,2020,1996,2020,1996,1996,2011,1996,1996,1996,1996],[2011,2020,2012,2020,2012,2020,2020,2020,2012,2012,2020,2020,2020,2020,2020,2020,2017,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2019,2020,2020,2019,2020,2020,2019,2020,2019,2020,2019,2020,2020,2019,2020,2020,2020,2020,2020,2020,2020,2020,2019,2020,2019,2020,2020,2020,2020,2020,2020,2020,2020,2020,2019,2020,2020,null,null,2020,2020,2020,1989,2020,1989,1989,2020,null,2020,2020,2020,2020,2020,2020,2020,2021,2021,2021,2021,2021,2021,2021,2021,2021,2021],[null,null,null,null,null,null,2006,2004,null,null,null,null,null,null,null,null,null,null,2006,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2006,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2006,null,null,null,null,2006,2010,null,null,null,null,null,null,null,null,1990,2006,2000,null,null,null,null,null,null,null,null,null,null,null,null,2006,null,null],[null,null,null,null,null,null,2011,2015,null,null,null,null,null,null,null,null,null,null,2011,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2011,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2011,null,null,null,null,2011,2020,null,null,null,null,null,null,null,null,1995,2011,2014,null,null,null,null,null,null,null,null,null,null,null,null,2011,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>State<\/th>\n      <th>Variable<\/th>\n      <th>Start year (hourly)<\/th>\n      <th>End year (hourly)<\/th>\n      <th>Start year (daily)<\/th>\n      <th>End year (daily)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]},{"name":"state","targets":0},{"name":"variable","targets":1},{"name":"start_year_hrly","targets":2},{"name":"end_year_hrly","targets":3},{"name":"start_year_dly","targets":4},{"name":"end_year_dly","targets":5}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="variables" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Variables<a href="metadata.html#variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-9842816b79e5b7d59db8" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9842816b79e5b7d59db8">{"x":{"filter":"none","vertical":false,"caption":"<caption>Variables and their units used in NAPMD<\/caption>","data":[["air_pressure","api","benzene","co","co2","coarse_pm","dew_point","formaldehyde","humidity","humidity","methane","neph","nh3","no","no2","non_methane_hydrocarbons","nox","o3","pm10","pm10_black_carbon","pm25","pmtsp","rain","so2","solar","temperature","temperature_internal","toluene","wind_direction","wind_direction_std_dev","wind_speed","wind_speed_scalar","wind_speed_std_dev","xylenes"],["hPa","none","ppb","ppm","ppm","ug_per_m3","degrees_C","ppb","g_per_m3","percent","ppm","inverse_megametres","ppm","ppm","ppm","ppm","ppm","ppm","ug_per_m3","ug_per_m3","ug_per_m3","ug_per_m3","mm","ppm","W_per_m2","degrees_C","degrees_C","ppb","degrees","degrees","m_per_s","m_per_s","m_per_s","ppb"],["Air pressure","Airborne particle index","Benzene","Carbon monoxide","Carbon dioxide","Coarse PM (PM10-PM2.5)","Dew point","Formaldehyde","Absolute humidity","Relative humidity","Methane","Visibility as measured by nephelometer","Ammonia","Nitrous oxide","Nitrogen dioxide","","Oxides of nitrogen","Ozone","Particulate matter (&lt;10 microns)","PM10 Black carbon","Particulate matter (&lt;2.5 microns)","Total Suspended Particles up to ~100 microns in diameter","Rainfall","Sulfur dioxide","Solar radiation","Temperature (external)","Temperature (internal)","Toluene","Wind direction","Wind direction standard deviation","Wind speed","Wind speed (scalar)","Wind speed standard deviation","Xylenes"],["barometric_pressure","Visibility Reduction","","","","","","","","relative_humidity","","bsp, visibility_reducing_particles","","","","","","","","","","","","","","","","","","wind_std_dev, sd1","","","",""],["atm, mbar","","","","","","","","","","","10^-4_per_m","","","","","","","","","","","","","","","","","","","","","",""]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>variable<\/th>\n      <th>units<\/th>\n      <th>description<\/th>\n      <th>alternative_name<\/th>\n      <th>alternative_units<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"name":"variable","targets":0},{"name":"units","targets":1},{"name":"description","targets":2},{"name":"alternative_name","targets":3},{"name":"alternative_units","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="date-and-time-fields" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Date and time fields<a href="metadata.html#date-and-time-fields" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For hourly observation data, the hour indicates the beginning of the averaging period (i.e. hour 0 marks the average between 00:00 and 01:00). The year, date and hour fields are in local time, without daylight savings. Timezones are as follows:</p>
+<ul>
+<li>UTC+08:00: WA</li>
+<li>UTC+09:30: NT, SA</li>
+<li>UTC+10:00: ACT, NSW, QLD, VIC, TAS</li>
+</ul>
+<p>All times are shown in UTC in the date_time_utc field, stored as a <em>timestamp with time zone</em> in PostgreSQL. Please note that some programs will automatically convert the UTC timezone to the local system timezone on retrieval from the database. Ensure that you are working in your desired time zone when manipulating this field.</p>
+</div>
+<div id="standardisation" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Standardisation<a href="metadata.html#standardisation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="variable-and-units" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Variable and units<a href="metadata.html#variable-and-units" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>All variable and unit names have been expressed in alphanumeric characters only with no whitespace. For some variables, reporting units differ across agencies. Conversion factors are shown in Table <a href="metadata.html#tab:tbl-unit-conversion">4.2</a>.</p>
+<table>
+<caption><span id="tab:tbl-unit-conversion">Table 4.2: </span>Conversion factors used for standardisation.</caption>
+<thead>
+<tr class="header">
+<th align="left">from</th>
+<th align="left">to</th>
+<th align="left">conversion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ppb</td>
+<td align="left">ppm</td>
+<td align="left">ppm = 0.001 * ppb</td>
+</tr>
+<tr class="even">
+<td align="left">pphm</td>
+<td align="left">ppm</td>
+<td align="left">ppm = 0.01 * pphm</td>
+</tr>
+<tr class="odd">
+<td align="left">10^-4_per_m</td>
+<td align="left">Mm^-1</td>
+<td align="left">Mm^-1 = 100 * 10^-4_per_m</td>
+</tr>
+<tr class="even">
+<td align="left">atm</td>
+<td align="left">hPa</td>
+<td align="left">hPa = 1013.25 * atm</td>
+</tr>
+<tr class="odd">
+<td align="left">mbar</td>
+<td align="left">hPa</td>
+<td align="left">hPa = mbar</td>
+</tr>
+<tr class="even">
+<td align="left">km/hr</td>
+<td align="left">m/s</td>
+<td align="left">m/s = 1000/(60 * 60) * km/hr</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="time-basis-hour-endingstarting" class="section level3 hasAnchor" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> Time basis (hour-ending/starting)<a href="metadata.html#time-basis-hour-endingstarting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The National Air Pollution Monitor Database converts all hourly data to be in 0-23 hour-beginning format (i.e. 0 represents midnight to 1am on the date specified). For different states and territories the source data can vary.</p>
+<table>
+<thead>
+<tr class="header">
+<th>State</th>
+<th>Data source</th>
+<th>Time basis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ACT</td>
+<td>All data</td>
+<td>0-23 hour-ending</td>
+</tr>
+<tr class="even">
+<td>NSW</td>
+<td>All data</td>
+<td>1-24 hour-ending</td>
+</tr>
+<tr class="odd">
+<td>NT</td>
+<td>All data</td>
+<td>1-24 hour-ending</td>
+</tr>
+<tr class="even">
+<td>Qld</td>
+<td>Open Portal downloads</td>
+<td>0-23 hour-beginning</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Historical database extracts</td>
+<td>1-24 hour-ending</td>
+</tr>
+<tr class="even">
+<td>SA</td>
+<td>Non-historic data</td>
+<td>0-23 hour-ending</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Spreadsheets pre-2003 (gases)</td>
+<td>0-23 hour-beginning</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Spreadsheets pre-2005 (PM2.5)</td>
+<td>0-23 hour-beginning</td>
+</tr>
+<tr class="odd">
+<td>Tas</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>Vic</td>
+<td>All data</td>
+<td>0-23 hour-beginning</td>
+</tr>
+<tr class="odd">
+<td>WA</td>
+<td>All data</td>
+<td>0-23 hour-ending</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="station-names" class="section level3 hasAnchor" number="4.5.3">
+<h3><span class="header-section-number">4.5.3</span> Station names<a href="metadata.html#station-names" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Station names have been generally cleaned by converting to lowercase with underscores, removing all non-alphanumeric characters and whitespace. Names may differ substantially from the original station name where:
+- two stations are co-located (e.g. one station is a regular air quality monitor, the second is part of a rural network or sensor network)
+- a station has moved locations (the agency regards the station is the same station but NAPMD will list the new location under a new station name, typically suffixed ’_post_YYYY_MM_DD’, with the date it moved)</p>
+<p>Note that the station name within a state will be unique, however different states may use the same station name (e.g. Richmond in both NSW and Victoria).</p>
+<p>Source identifiers are kept with the station names where possible so that they can be cross-referenced with the original data. Use the source identifier to find continuous data for stations which have moved locations over time.</p>
+</div>
+<div id="station-locations" class="section level3 hasAnchor" number="4.5.4">
+<h3><span class="header-section-number">4.5.4</span> Station locations<a href="metadata.html#station-locations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Please note that NAPMD station coordinates may differ from the source data coordinates. This may be for a variety of reasons:</p>
+<ul>
+<li>The station has moved and the source data coordinates only show the most recent location</li>
+<li>The station has been more accurately geocoded than the source data coordinates (typically with the help of Google Maps and Google Earth)</li>
+<li>The coordinates are set to 0, 0 (hidden) in the source data and have been removed entirely in NAPMD</li>
+</ul>
+<!-- ## Measurement method ### -->
+<!-- Measurement method is a field that is used to determine the different measurement equipment or provide clarity on the variable. Currently this has not been standardised for all variables. -->
+<!-- #### PM2.5 TEOMs and BAMs #### -->
+<!-- Across Australia there has been a general move from TEOMs to BAMs over time. -->
+<!-- **ACT:** 2014 (inclusive) and onwards: BAM. Otherwise TEOM. -->
+<!-- **NSW:** 2013-2016 (inclusive) and onwards: BAM. Otherwise TEOM. -->
+<!-- **QLD:** Always used TEOM. -->
+<!-- **SA:** 2016 (inclusive) and onwards: BAM. Otherwise TEOM. -->
+<!-- **VIC:** 2014 (inclusive) and onwards: BAM. Otherwise TEOM. -->
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="napmd-database-infrastructure.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conditions-of-use.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
