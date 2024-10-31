@@ -1,0 +1,29 @@
+# Resources and Links
+
+## CARDAT platform
+
+ - [CARDAT website][cardat-home]
+    - [CARDAT DB tools github repository][cardatdbtools-repo]  (Helper functions to connect to PostGIS CAR - requires username and password)
+    - [NAPMD DB tools github repository][napmdtools-repo]  (Package to access NAPMD API functions - requires API key)
+ - [Centre for Safe Air][centre-air-home]
+ - [WHO Collaborating Centre for Climate Change and Health Impact Assessment][whocc-cchia-home]
+
+## National Air Technical Advisory Group (NATAG)
+
+The [National Air Quality Technical Advisory Group (NATAG)][natag-home] is the national group who provides advice on air pollution policy and standards. Membership is drawn from state and territory agencies and the federal government.
+
+## Air Quality Legislation
+
+The [National Environment Protection (Ambient Air Quality) Measure (NEPM)](https://www.legislation.gov.au/Series/F2007B01142) sets out air pollution concentration standards and averaging periods.
+
+## State/Territory Live Air Quality
+
+ - [ACT](https://www.act.gov.au/health/topics/air-quality-and-pollen/check-current-air-quality-readings-in-the-act)
+ - [NSW](https://www.airquality.nsw.gov.au/air-quality-in-my-area/concentration-data)
+ - [NT](http://ntepa.webhop.net/NTEPA/Default.ltr.aspx)
+ - [QLD](https://apps.des.qld.gov.au/air-quality/)
+ - [SA](https://www.epa.sa.gov.au/environmental_info/air_quality/new-air-quality-monitoring)
+ - [TAS](https://epa.tas.gov.au/environment/air/monitoring-air-pollution/monitoring-data/real-time-air-quality-data-for-tasmania)
+ - [VIC](https://www.epa.vic.gov.au/for-community/airwatch)
+ - [WA](https://www.der.wa.gov.au/your-environment/air/air-quality-index)
+ 

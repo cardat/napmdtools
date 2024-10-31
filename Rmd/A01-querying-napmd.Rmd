@@ -1,0 +1,156 @@
+# (APPENDIX) Appendix {-}
+
+```{r setup-appendix}
+knitr::opts_chunk$set(eval = F, echo = T)
+```
+
+# Querying NAPMD
+
+NAPMD can be accessed via:
+
+- an API (requiring an API username and password), or 
+- Postgres connection (requiring a database username and password).
+
+The instructions that follow are aimed primarily at `R` users. To use `R`, you will need to install both [R](https://www.r-project.org/) and [RStudio](https://posit.co/download/rstudio-desktop/).
+
+## Using API with R `napmdtools` package
+
+`R` functions that interface with the NAPMD API can be found in the `napmdtools` package. See the package repository and instructions [here][napmdtools-repo].
+
+## Via DB connection with R `RPostgreSQL` package
+
+Connect to the database with the following:
+
+```{r example-r-dbconn}
+# Load RPostgreSQL library
+require("RPostgreSQL")
+
+# Load the PostgreSQL driver
+drv <- dbDriver("PostgreSQL")
+
+## create your password
+## Either (NOTE: this window can open in the background, so you might need to minimise RStudio to see it.
+postgres_pwd <- askpass::askpass(prompt = "Please enter your password: ")
+## OR
+# postgres_pwd <- "<your_password>"
+
+## Create a connection to the postgres database 
+ch <- dbConnect(drv, dbname = "postgis_car",
+                host = "<server_name>", port = 5432,
+                user = "<user_name>", password = postgres_pwd)
+
+remove(postgres_pwd)
+```
+
+Once connect, use the `dbGetQuery` function to query with the database using SQL. For example:
+
+```{r example-r-dbquery}
+
+df.mons  <- dbGetQuery(ch, "SELECT * from air_pollution_monitors.ap_monitor_data_master 
+                       where state = 'SA'
+                       limit 100;")
+
+```
+
+## Example SQL queries
+
+### Geospatial data (station locations)
+
+Please note the table include latitude and longitude (EPSG:4283) fields. Geometry is stored using the PostGIS extension in the `geom_gda94` (EPSG:4283) and `geom_albers` (EPSG:3577) columns.
+
+To get specific state/territory information, query the individual state/territory table.
+
+```{sql qry-state-locs}
+SELECT * 
+FROM air_pollution_monitors.ap_monitor_locations_nsw
+LIMIT 10;
+```
+
+Or query for all states and territories, retrieving common fields
+
+```{sql qry-all-locs}
+SELECT * 
+FROM air_pollution_monitors.ap_monitor_locations_master
+LIMIT 10;
+```
+
+### Stations by parameter
+
+Get all stations by variable:
+
+```{sql qry-stns-by-var}
+SELECT l.* 
+FROM air_pollution_monitors.ap_monitor_locations_master l
+WHERE l.station_id IN 
+(SELECT d.station_id 
+ FROM air_pollution_monitors.ap_monitor_data_master d
+ WHERE d.variable ='co');
+```
+
+Get all stations by year and variable:
+ 
+```{sql qry-stns-by-yr-var}
+SELECT l.* 
+FROM air_pollution_monitors.ap_monitor_locations_master l
+WHERE l.station_id IN 
+(SELECT d.station_id 
+ FROM air_pollution_monitors.ap_monitor_data_master d
+ WHERE d.year = 2010
+ AND d.variable ='co');
+```
+
+Get stations by variable, year and state
+
+```{sql qry-stns-by-state-yr-var}
+SELECT l.* 
+FROM air_pollution_monitors.ap_monitor_locations_sa l
+WHERE EXISTS 
+	(SELECT 1 FROM air_pollution_monitors.ap_monitor_data_sa_2015 d
+	 WHERE l.station_id = d.station_id
+	 AND d.variable ='pm25')
+ORDER BY l.station DESC;
+```
+
+### Observation data
+
+Get hourly data by state and year (fastest to query the child table):
+```{sql qry-obs-by-state-year}
+SELECT * FROM air_pollution_monitors.ap_monitor_data_wa_2020;
+```
+
+Get hourly data by year and variable:
+```{sql qry-obs-by-var-year}
+SELECT * FROM air_pollution_monitors.ap_monitor_data_master
+WHERE year = 2020
+AND variable ='no2';
+```
+
+Get hourly data by variable and state:
+```{sql qry-obs-by-var-state}
+SELECT * FROM air_pollution_monitors.ap_monitor_data_master
+WHERE state = 'SA'
+AND variable ='pm10';
+```
+
+Get hourly data by variable for multiple states:
+```{sql qry-obs-by-var-states}
+SELECT * FROM air_pollution_monitors.ap_monitor_data_master
+WHERE state in ('SA','VIC')
+AND variable ='pm10';
+```
+
+Get hourly data by state for multiple variables:
+```{sql qry-obs-by-state-vars}
+SELECT * FROM air_pollution_monitors.ap_monitor_data_master
+WHERE state = 'ACT'
+AND variable in ('no2','o3');")
+```
+
+<!-- ## Via pgAdmin 4 -->
+
+<!--  - Connect to the database instructions can be found [here][4]. -->
+<!--  - Query examples can be found [here][5] -->
+
+<!-- ## Access the data scripts with a database connection -->
+<!--  - Connect to the database instructions can be found [here][6]. -->
+<!--  - Query examples can be found [here][7]. -->

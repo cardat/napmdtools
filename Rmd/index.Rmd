@@ -1,0 +1,67 @@
+--- 
+title: "The National Air Pollution Monitoring Database (NAPMD) (Last edited on `r Sys.Date()`)"
+site: bookdown::bookdown_site
+output: 
+  bookdown::gitbook:
+    theme: united
+    config:
+      edit: null
+      download: null
+      sharing: false
+params: 
+  retrieve_fr_db: FALSE
+---
+
+```{r setup}
+knitr::opts_chunk$set(echo = F)
+
+# store and retrieve saved info from here
+workdir <- "private"; if(!dir.exists(workdir)) dir.create(workdir)
+
+```
+
+# Welcome
+
+Welcome to the Australian National Air Pollution Monitor Database (NAPMD). 
+
+This database was consolidated by the [Clean Air and health Research Data and Analysis Technology (CARDAT)][cardat-home] platform, overseen by the [Centre for Safe Air (CSA)][centre-air-home] (formerly the Centre for Air pollution, energy and health Research (CAR)) and the [WHO Collaborating Centre for Climate Change and Health Impact Assessment][whocc-cchia-home]. It aims to standardise the national collection of data from all government air pollution monitors in Australia.
+
+The data are available in a larger repository of geospatial data for modelling air pollution exposure, health burden and impact. For more information see the [CARDAT homepage][cardat-home].
+
+The database is available for research purposes. Please see section \@ref(#using-napmd) and inquire by [email to CARDAT][cardat-email].
+
+## Acknowledgements and thanks {#acknowledgements}
+
+This database was made possible through the fantastic co-operation, support and data from Australian state and territory government agencies:
+
+ - [ACT Health Department](https://health.act.gov.au/)
+ - [NSW Department of Climate Change, Energy, the Environment and Water (DCCEEW)](https://www.dcceew.gov.au/)
+ - [NT Environment Protection Authority](https://ntepa.nt.gov.au/)
+ - [QLD Department of Environment, Science and Innovation](https://www.desi.qld.gov.au/)
+ - [SA Environment Protection Authority](https://www.epa.sa.gov.au/)
+ - [Environmental Protection Authority Tasmania](https://epa.tas.gov.au/epa)
+ - [WA Department of Water and Environmental Regulation](https://www.wa.gov.au/organisation/department-of-water-and-environmental-regulation)
+ - [Environmental Protection Authority Victoria](https://www.epa.vic.gov.au)
+ 
+  
+## Funding {#funding}
+
+With thanks to the [Centre for Safe Air][centre-air-home] and the [Australian Research Data Commons][ardc-home] for providing the funding to make the National Air Pollution Monitoring Database possible.
+
+<!-- Key organisations -->
+[cardat-home]: http://cardat.github.io/
+[cardat-email]: mailto:car.data@sydney.edu.au
+[centre-air-home]: https://safeair.org.au/
+[whocc-cchia-home]: https://research.curtin.edu.au/whocc-cchia/
+[ardc-home]: https://ardc.edu.au/
+[natag-home]: https://www.dcceew.gov.au/environment/protection/air-quality/national-clean-air-agreement/national-air-technical-advisory-group
+
+<!-- Repositories -->
+[cardatdbtools-repo]: https://github.com/cardat/cardatdbtools
+[napmdtools-repo]: https://github.com/cardat/napmdtools
+
+<!-- Contacts -->
+[tas-contact]: mailto:air@epa.tas.gov.au
+
+<!-- Licences -->
+[cc-by-4.0-int]: https://creativecommons.org/licenses/by/4.0/

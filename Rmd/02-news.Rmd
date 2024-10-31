@@ -1,0 +1,11 @@
+# News
+
+## 2023-11-19
+ 
+ - Removed all non-1hrly averages from ap_monitor_data_master table
+ - Corrected date_time_utc field
+ - Removed QLD observations in 2020 where value = -9999
+ 
+## 2022-01-20
+
+ - Licence for Tas EPA data updated.

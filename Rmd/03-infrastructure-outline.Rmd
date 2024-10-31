@@ -1,0 +1,31 @@
+# NAPMD Database Infrastructure
+
+## General overview
+
+The National Air Pollution Monitoring Database is a single component within the [CARDAT][cardat-home] infrastructure. It consists of a schema (`air_pollution_monitors`) in a larger PostGIS database called PostGIS CAR and sits alongside of other geospatial data that can be used for modelling air pollution and health impact assessments.
+
+![*PostGIS CAR Database*](images/postgis_car_database.PNG)
+
+## Table structure
+
+The tables are structured into three types:
+
+ - Hourly data: There are individual hourly data tables by state and year which are incorporated into a single master table for hourly data.
+ - Daily data: There are individual daily data tables by state and year which are incorporated into a single master table for daily data.
+ - Station locations: There are individual station location tables by state, which are incorporated into a single master table for station locations.
+
+The image below shows the basic relationship between the major tables.
+    
+![*NAPMD Database Structure*](images/nat_ap_monitor_db.png)
+
+Note that individual station location tables hold additional columns that are not available via the master table.
+
+<!-- There is a secondary schema (`air_pollution_monitors_change_log`) which consist of tables which record data which have been changed in the main schema (air_pollution_monitors). This is done via a trigger function that copies the old data into a 'shadow' table keeping a record of who made the change and when. There is an optional field for adding information about the change, and for grouping changes done as a batch. -->
+
+<!-- ### Optimisation and constraints ### -->
+<!-- There is a lot of data in the master hourly table (10's of millions of rows), and consequently queries can be very slow. To help improve this the tables have been split as describe above. Each individual child hourly and daily data table has the following 4 constraints: -->
+
+<!--  1. A primary key for the record -->
+<!--  2. A state and year constraint (for example the table air_pollution_monitors.ap_monitor_data_qld_2017 has a constraint of state = 'QLD' and year = 2017) -->
+<!--  3. A foreign key constraint on station_id which links to the specific location table (for example air_pollution_monitors.ap_monitor_data_tas_2011 will link to the air_pollution_monitors.ap_monitor_location_tas table) -->
+<!--  4. A unique constraint on station_id, station, state, year, date, hour, variable, units, measurement_method, time_basis -->
