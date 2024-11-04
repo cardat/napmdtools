@@ -22,7 +22,7 @@ knitr::kable(dt.num_stns[order(state)],
 ```
 
 
-Locations of stations (see counts in Table \@ref(tab:tbl-num-stns)) (coordinates are approximate):
+Locations of stations (see counts in Table \@ref(tab:tbl-num-stns)) (displayed markers are approximate):
 
 ```{r map_stns}
 if(params$retrieve_fr_db) {

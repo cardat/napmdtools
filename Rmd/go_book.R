@@ -26,7 +26,7 @@ render_book("Rmd/",
               config = list(sharing = NULL, toc = list(collapse = "section"))
             ),
             params = list(retrieve_fr_db = retrieve_fr_db)) # create connection beforehand if TRUE
-dbDisconnect(ch)
+if(exists("ch")) RPostgreSQL::dbDisconnect(ch)
 
 # clear old files from project directory and move rendered files over
 fs_old <- c(list.files(".", pattern = ".html$"),
