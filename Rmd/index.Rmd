@@ -28,7 +28,7 @@ This database was consolidated by the [Clean Air and health Research Data and An
 
 The data are available in a larger repository of geospatial data for modelling air pollution exposure, health burden and impact. For more information see the [CARDAT homepage][cardat-home].
 
-The database is available for research purposes. Please see section \@ref(#using-napmd) and inquire by [email to CARDAT][cardat-email].
+The database is available for research purposes. Please see section \@ref(using-napmd) and inquire by [email to CARDAT][cardat-email].
 
 ## Acknowledgements and thanks {#acknowledgements}
 

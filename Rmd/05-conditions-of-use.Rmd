@@ -10,7 +10,7 @@ Whenever you use this database in publications, please **use the following citat
 > EPA, and ACT Health. Downloaded from the 
 > Centre for Safe Air [accessed YYYY-MM-DD] DOI 10.17605/OSF.IO/JXD98
 
-Please note the data has been provided by Australian state and territory governments, and are therefore subject to differing licences, conditions of use and disclaimers. When using data please abide by the the relevant licensing and conditions of us set out by each agency, in addition to the conditions of use of NAPMD above. 
+Note the data has been provided by Australian state and territory governments, and are therefore subject to differing licences, conditions of use and disclaimers. When using data please abide by the the relevant licensing and conditions of us set out by each agency, in addition to the conditions of use of NAPMD above. 
 
 A summary of individual agency licences and conditions of use are shown below.
 

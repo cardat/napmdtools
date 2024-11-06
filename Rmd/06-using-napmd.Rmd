@@ -1,4 +1,4 @@
-# Using NAPMD
+# Using NAPMD {#using-napmd}
 
 The NAPMD is freely available to researchers. Access is granted individually on [request to CARDAT][cardat-email] - please put NAPMD access in the subject line to assist with granting access sooner. You will be asked to read and acknowledge [conditions of use and disclaimers](#conditions-of-use) prior to being given access.
 
@@ -15,7 +15,7 @@ In your publications using these data please remember to abide by the [condition
  - cite the National Air Pollution Monitoring Database
  - [contact Tas EPA][tas-contact] to confirm usage is acceptable (if [using Tasmanian data](#tas-conditions))
  - cite the relevant NSW paper (if [using NSW data](#nsw-conditions))
- - report usage back to us so we can let the relevant state and territory organisations know how their data are being used [car.data@sydney.edu.au][11]
+ - [report usage back to us][cardat-email] so we can let the relevant state and territory organisations know how their data are being used 
 
 ## Using the database
 
@@ -29,4 +29,4 @@ For recent years, most data is available by hour only and is not included in the
 
 ## Questions about the data, and reporting improbable values
 
-The NAPMD is a collaborative database between the [state and territory governments](#acknowledgements), the [Centre for Safe Air][centre-air-home] and our users. We ask that you contact us (car.data@sydney.edu.au) with any question about the data or improbable values you find so that we can ensure the data is being used in a fit for purpose manner and is of the highest quality.
+The NAPMD is a collaborative database between the [state and territory governments](#acknowledgements), the [Centre for Safe Air][centre-air-home] and our users. We ask that you [contact us][cardat-email] with any question about the data or improbable values you find so that we can ensure the data is being used in a fit for purpose manner and is of the highest quality.
