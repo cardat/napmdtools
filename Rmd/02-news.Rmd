@@ -1,5 +1,10 @@
 # News
 
+## 2024-11-05
+
+ - Corrected datetime fields for NT 2011-2017 where observations with hour 0 were assigned to the wrong date
+ - Corrected datetime fields for ACT, NT and WA to be hour-beginning in line with other states and territories
+
 ## 2023-11-19
  
  - Removed all non-1hrly averages from ap_monitor_data_master table

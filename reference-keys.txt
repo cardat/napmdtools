@@ -6,6 +6,7 @@ funding
 news
 section
 section-1
+section-2
 napmd-database-infrastructure
 general-overview
 table-structure

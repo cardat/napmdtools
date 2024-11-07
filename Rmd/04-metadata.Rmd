@@ -2,6 +2,32 @@
 
 ## Spatial coverage
 
+Station locations (see counts in Table \@ref(tab:tbl-num-stns)):
+
+```{r map_stns}
+if(params$retrieve_fr_db) {
+  dt.stns <- dbGetQuery(
+    ch,
+    "select station, lat, lon
+           from air_pollution_monitors.ap_monitor_locations_master"
+  )
+  setDT(dt.stns)
+  dt.stns <- dt.stns[!is.na(lat) & !is.na(lon)]
+  dt.stns[, `:=`(lat = lat + rnorm(nrow(dt.stns)) * 0.03,
+                 lon = lon + rnorm(nrow(dt.stns)) * 0.03)]
+  
+  sf.stns <- st_as_sf(dt.stns, coords = c("lon", "lat"), crs = 4283)
+  sf.stns <- st_transform(sf.stns, 4326)
+  saveRDS(sf.stns, file.path(workdir, "sf_stns.rds"))
+} else {
+  sf.stns <- readRDS(file.path(workdir, "sf_stns.rds"))
+}
+
+leaflet() %>% addTiles() %>% addCircles(data = sf.stns)
+```
+
+*Display marker coordinates have been modified to protect confidentiality and privacy of property owners. Precise locations are available from NAPMD.*
+
 ```{r tbl-num-stns}
 if(params$retrieve_fr_db){
   dt.num_stns <- dbGetQuery(ch, "select state, COUNT(*) as n_stns 
@@ -21,30 +47,6 @@ knitr::kable(dt.num_stns[order(state)],
 
 ```
 
-
-Locations of stations (see counts in Table \@ref(tab:tbl-num-stns)) (displayed markers are approximate):
-
-```{r map_stns}
-if(params$retrieve_fr_db) {
-  dt.stns <- dbGetQuery(
-    ch,
-    "select station, lat, lon
-           from air_pollution_monitors.ap_monitor_locations_master"
-  )
-  setDT(dt.stns)
-  dt.stns <- dt.stns[!is.na(lat) & !is.na(lon)]
-  dt.stns[, `:=`(lat = lat + rnorm(1) * 0.05,
-                 lon = lon + rnorm(1) * 0.05)]
-  
-  sf.stns <- st_as_sf(dt.stns, coords = c("lon", "lat"), crs = 4283)
-  sf.stns <- st_transform(sf.stns, 4326)
-  saveRDS(sf.stns, file.path(workdir, "sf_stns.rds"))
-} else {
-  sf.stns <- readRDS(file.path(workdir, "sf_stns.rds"))
-}
-
-leaflet() %>% addTiles() %>% addCircles(data = sf.stns)
-```
 
 ## Temporal coverage
 
