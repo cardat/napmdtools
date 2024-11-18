@@ -49,18 +49,19 @@ create_api_key <- function(dir = "private") {
   yaml::write_yaml(credentials, api_file)
   message("Created API credentials file at: ", api_file)
   
-  # Update .gitignore
+  # Update .gitignore section of the function:
   gitignore <- ".gitignore"
   ignore_entry <- file.path(dir, "api_key.yaml")
   
   if (file.exists(gitignore)) {
-    current_ignores <- readLines(gitignore)
+    current_ignores <- readLines(gitignore, warn = FALSE)
     if (!ignore_entry %in% current_ignores) {
-      write(ignore_entry, gitignore, append = TRUE)
+      # Ensure there's a newline at the end
+      write(paste0(ignore_entry, "\n"), gitignore, append = TRUE)
       message("Added ", ignore_entry, " to .gitignore")
     }
   } else {
-    write(ignore_entry, gitignore)
+    write(paste0(ignore_entry, "\n"), gitignore)
     message("Created .gitignore and added ", ignore_entry)
   }
   
