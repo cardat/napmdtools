@@ -52,6 +52,23 @@ df.mons  <- dbGetQuery(ch, "SELECT * from air_pollution_monitors.ap_monitor_data
 
 ```
 
+For geospatial work, you can read the locations tables directly into an `sf` or `SpatVector` (`terra`) object through the `rpostgis` package:
+
+```{r example-rpostgis}
+library(rpostgis)
+# read as sf object
+sf.mons <- rpostgis::pgGetGeom(ch, 
+                               c("air_pollution_monitors", "ap_monitor_locations_act"), 
+                               geom = "geom_gda94",
+                               returnclass = "sf")
+# or as terra SpatVector
+v.mons <- rpostgis::pgGetGeom(ch, 
+                              c("air_pollution_monitors", "ap_monitor_locations_act"), 
+                              geom = "geom_gda94",
+                              returnclass = "terra")
+
+```
+
 ## Example SQL queries
 
 ### Geospatial data (station locations)

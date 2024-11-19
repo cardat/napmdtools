@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>A Querying NAPMD | The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-11-07)</title>
-  <meta name="description" content="A Querying NAPMD | The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-11-07)" />
+  <title>A Querying NAPMD | The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-11-19)</title>
+  <meta name="description" content="A Querying NAPMD | The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-11-19)" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A Querying NAPMD | The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-11-07)" />
+  <meta property="og:title" content="A Querying NAPMD | The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-11-19)" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A Querying NAPMD | The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-11-07)" />
+  <meta name="twitter:title" content="A Querying NAPMD | The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-11-19)" />
   
   
   
@@ -163,9 +163,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="news.html"><a href="news.html"><i class="fa fa-check"></i><b>2</b> News</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="news.html"><a href="news.html#section"><i class="fa fa-check"></i><b>2.1</b> 2024-11-05</a></li>
-<li class="chapter" data-level="2.2" data-path="news.html"><a href="news.html#section-1"><i class="fa fa-check"></i><b>2.2</b> 2023-11-19</a></li>
-<li class="chapter" data-level="2.3" data-path="news.html"><a href="news.html#section-2"><i class="fa fa-check"></i><b>2.3</b> 2022-01-20</a></li>
+<li class="chapter" data-level="2.1" data-path="news.html"><a href="news.html#section"><i class="fa fa-check"></i><b>2.1</b> 2024-11-18</a></li>
+<li class="chapter" data-level="2.2" data-path="news.html"><a href="news.html#section-1"><i class="fa fa-check"></i><b>2.2</b> 2024-11-14</a></li>
+<li class="chapter" data-level="2.3" data-path="news.html"><a href="news.html#section-2"><i class="fa fa-check"></i><b>2.3</b> 2024-11-05</a></li>
+<li class="chapter" data-level="2.4" data-path="news.html"><a href="news.html#section-3"><i class="fa fa-check"></i><b>2.4</b> 2023-11-19</a></li>
+<li class="chapter" data-level="2.5" data-path="news.html"><a href="news.html#section-4"><i class="fa fa-check"></i><b>2.5</b> 2022-01-20</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="napmd-database-infrastructure.html"><a href="napmd-database-infrastructure.html"><i class="fa fa-check"></i><b>3</b> NAPMD Database Infrastructure</a>
 <ul>
@@ -232,7 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-11-07)</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The National Air Pollution Monitoring Database (NAPMD) (Last edited on 2024-11-19)</a>
           </h1>
         </div>
 
@@ -277,6 +279,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="querying-napmd.html#cb3-1" tabindex="-1"></a>df.mons  <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(ch, <span class="st">&quot;SELECT * from air_pollution_monitors.ap_monitor_data_master </span></span>
 <span id="cb3-2"><a href="querying-napmd.html#cb3-2" tabindex="-1"></a><span class="st">                       where state = &#39;SA&#39;</span></span>
 <span id="cb3-3"><a href="querying-napmd.html#cb3-3" tabindex="-1"></a><span class="st">                       limit 100;&quot;</span>)</span></code></pre></div>
+<p>For geospatial work, you can read the locations tables directly into an <code>sf</code> or <code>SpatVector</code> (<code>terra</code>) object through the <code>rpostgis</code> package:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="querying-napmd.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(rpostgis)</span>
+<span id="cb4-2"><a href="querying-napmd.html#cb4-2" tabindex="-1"></a><span class="co"># read as sf object</span></span>
+<span id="cb4-3"><a href="querying-napmd.html#cb4-3" tabindex="-1"></a>sf.mons <span class="ot">&lt;-</span> rpostgis<span class="sc">::</span><span class="fu">pgGetGeom</span>(ch, </span>
+<span id="cb4-4"><a href="querying-napmd.html#cb4-4" tabindex="-1"></a>                               <span class="fu">c</span>(<span class="st">&quot;air_pollution_monitors&quot;</span>, <span class="st">&quot;ap_monitor_locations_act&quot;</span>), </span>
+<span id="cb4-5"><a href="querying-napmd.html#cb4-5" tabindex="-1"></a>                               <span class="at">geom =</span> <span class="st">&quot;geom_gda94&quot;</span>,</span>
+<span id="cb4-6"><a href="querying-napmd.html#cb4-6" tabindex="-1"></a>                               <span class="at">returnclass =</span> <span class="st">&quot;sf&quot;</span>)</span>
+<span id="cb4-7"><a href="querying-napmd.html#cb4-7" tabindex="-1"></a><span class="co"># or as terra SpatVector</span></span>
+<span id="cb4-8"><a href="querying-napmd.html#cb4-8" tabindex="-1"></a>v.mons <span class="ot">&lt;-</span> rpostgis<span class="sc">::</span><span class="fu">pgGetGeom</span>(ch, </span>
+<span id="cb4-9"><a href="querying-napmd.html#cb4-9" tabindex="-1"></a>                              <span class="fu">c</span>(<span class="st">&quot;air_pollution_monitors&quot;</span>, <span class="st">&quot;ap_monitor_locations_act&quot;</span>), </span>
+<span id="cb4-10"><a href="querying-napmd.html#cb4-10" tabindex="-1"></a>                              <span class="at">geom =</span> <span class="st">&quot;geom_gda94&quot;</span>,</span>
+<span id="cb4-11"><a href="querying-napmd.html#cb4-11" tabindex="-1"></a>                              <span class="at">returnclass =</span> <span class="st">&quot;terra&quot;</span>)</span></code></pre></div>
 </div>
 <div id="example-sql-queries" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">A.3</span> Example SQL queries<a href="querying-napmd.html#example-sql-queries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -284,60 +298,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">A.3.1</span> Geospatial data (station locations)<a href="querying-napmd.html#geospatial-data-station-locations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Please note the table include latitude and longitude (EPSG:4283) fields. Geometry is stored using the PostGIS extension in the <code>geom_gda94</code> (EPSG:4283) and <code>geom_albers</code> (EPSG:3577) columns.</p>
 <p>To get specific state/territory information, query the individual state/territory table.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb4-1"><a href="querying-napmd.html#cb4-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb4-2"><a href="querying-napmd.html#cb4-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_nsw</span>
-<span id="cb4-3"><a href="querying-napmd.html#cb4-3" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
-<p>Or query for all states and territories, retrieving common fields</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="querying-napmd.html#cb5-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb5-2"><a href="querying-napmd.html#cb5-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_master</span>
+<span id="cb5-2"><a href="querying-napmd.html#cb5-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_nsw</span>
 <span id="cb5-3"><a href="querying-napmd.html#cb5-3" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<p>Or query for all states and territories, retrieving common fields</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb6-1"><a href="querying-napmd.html#cb6-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb6-2"><a href="querying-napmd.html#cb6-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_master</span>
+<span id="cb6-3"><a href="querying-napmd.html#cb6-3" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
 </div>
 <div id="stations-by-parameter" class="section level3 hasAnchor" number="8.3.2">
 <h3><span class="header-section-number">A.3.2</span> Stations by parameter<a href="querying-napmd.html#stations-by-parameter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Get all stations by variable:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb6-1"><a href="querying-napmd.html#cb6-1" tabindex="-1"></a><span class="kw">SELECT</span> l.<span class="op">*</span> </span>
-<span id="cb6-2"><a href="querying-napmd.html#cb6-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_master l</span>
-<span id="cb6-3"><a href="querying-napmd.html#cb6-3" tabindex="-1"></a><span class="kw">WHERE</span> l.station_id <span class="kw">IN</span> </span>
-<span id="cb6-4"><a href="querying-napmd.html#cb6-4" tabindex="-1"></a>(<span class="kw">SELECT</span> d.station_id </span>
-<span id="cb6-5"><a href="querying-napmd.html#cb6-5" tabindex="-1"></a> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master d</span>
-<span id="cb6-6"><a href="querying-napmd.html#cb6-6" tabindex="-1"></a> <span class="kw">WHERE</span> d.variable <span class="op">=</span><span class="st">&#39;co&#39;</span>);</span></code></pre></div>
-<p>Get all stations by year and variable:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb7-1"><a href="querying-napmd.html#cb7-1" tabindex="-1"></a><span class="kw">SELECT</span> l.<span class="op">*</span> </span>
 <span id="cb7-2"><a href="querying-napmd.html#cb7-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_master l</span>
 <span id="cb7-3"><a href="querying-napmd.html#cb7-3" tabindex="-1"></a><span class="kw">WHERE</span> l.station_id <span class="kw">IN</span> </span>
 <span id="cb7-4"><a href="querying-napmd.html#cb7-4" tabindex="-1"></a>(<span class="kw">SELECT</span> d.station_id </span>
 <span id="cb7-5"><a href="querying-napmd.html#cb7-5" tabindex="-1"></a> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master d</span>
-<span id="cb7-6"><a href="querying-napmd.html#cb7-6" tabindex="-1"></a> <span class="kw">WHERE</span> d.<span class="dt">year</span> <span class="op">=</span> <span class="dv">2010</span></span>
-<span id="cb7-7"><a href="querying-napmd.html#cb7-7" tabindex="-1"></a> <span class="kw">AND</span> d.variable <span class="op">=</span><span class="st">&#39;co&#39;</span>);</span></code></pre></div>
-<p>Get stations by variable, year and state</p>
+<span id="cb7-6"><a href="querying-napmd.html#cb7-6" tabindex="-1"></a> <span class="kw">WHERE</span> d.variable <span class="op">=</span><span class="st">&#39;co&#39;</span>);</span></code></pre></div>
+<p>Get all stations by year and variable:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb8-1"><a href="querying-napmd.html#cb8-1" tabindex="-1"></a><span class="kw">SELECT</span> l.<span class="op">*</span> </span>
-<span id="cb8-2"><a href="querying-napmd.html#cb8-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_sa l</span>
-<span id="cb8-3"><a href="querying-napmd.html#cb8-3" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">EXISTS</span> </span>
-<span id="cb8-4"><a href="querying-napmd.html#cb8-4" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="dv">1</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_sa_2015 d</span>
-<span id="cb8-5"><a href="querying-napmd.html#cb8-5" tabindex="-1"></a>     <span class="kw">WHERE</span> l.station_id <span class="op">=</span> d.station_id</span>
-<span id="cb8-6"><a href="querying-napmd.html#cb8-6" tabindex="-1"></a>     <span class="kw">AND</span> d.variable <span class="op">=</span><span class="st">&#39;pm25&#39;</span>)</span>
-<span id="cb8-7"><a href="querying-napmd.html#cb8-7" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> l.station <span class="kw">DESC</span>;</span></code></pre></div>
+<span id="cb8-2"><a href="querying-napmd.html#cb8-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_master l</span>
+<span id="cb8-3"><a href="querying-napmd.html#cb8-3" tabindex="-1"></a><span class="kw">WHERE</span> l.station_id <span class="kw">IN</span> </span>
+<span id="cb8-4"><a href="querying-napmd.html#cb8-4" tabindex="-1"></a>(<span class="kw">SELECT</span> d.station_id </span>
+<span id="cb8-5"><a href="querying-napmd.html#cb8-5" tabindex="-1"></a> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master d</span>
+<span id="cb8-6"><a href="querying-napmd.html#cb8-6" tabindex="-1"></a> <span class="kw">WHERE</span> d.<span class="dt">year</span> <span class="op">=</span> <span class="dv">2010</span></span>
+<span id="cb8-7"><a href="querying-napmd.html#cb8-7" tabindex="-1"></a> <span class="kw">AND</span> d.variable <span class="op">=</span><span class="st">&#39;co&#39;</span>);</span></code></pre></div>
+<p>Get stations by variable, year and state</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb9-1"><a href="querying-napmd.html#cb9-1" tabindex="-1"></a><span class="kw">SELECT</span> l.<span class="op">*</span> </span>
+<span id="cb9-2"><a href="querying-napmd.html#cb9-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_sa l</span>
+<span id="cb9-3"><a href="querying-napmd.html#cb9-3" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">EXISTS</span> </span>
+<span id="cb9-4"><a href="querying-napmd.html#cb9-4" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="dv">1</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_sa_2015 d</span>
+<span id="cb9-5"><a href="querying-napmd.html#cb9-5" tabindex="-1"></a>     <span class="kw">WHERE</span> l.station_id <span class="op">=</span> d.station_id</span>
+<span id="cb9-6"><a href="querying-napmd.html#cb9-6" tabindex="-1"></a>     <span class="kw">AND</span> d.variable <span class="op">=</span><span class="st">&#39;pm25&#39;</span>)</span>
+<span id="cb9-7"><a href="querying-napmd.html#cb9-7" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> l.station <span class="kw">DESC</span>;</span></code></pre></div>
 </div>
 <div id="observation-data" class="section level3 hasAnchor" number="8.3.3">
 <h3><span class="header-section-number">A.3.3</span> Observation data<a href="querying-napmd.html#observation-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Get hourly data by state and year (fastest to query the child table):</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb9-1"><a href="querying-napmd.html#cb9-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_wa_2020;</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb10-1"><a href="querying-napmd.html#cb10-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_wa_2020;</span></code></pre></div>
 <p>Get hourly data by year and variable:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb10-1"><a href="querying-napmd.html#cb10-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master</span>
-<span id="cb10-2"><a href="querying-napmd.html#cb10-2" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2020</span></span>
-<span id="cb10-3"><a href="querying-napmd.html#cb10-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="op">=</span><span class="st">&#39;no2&#39;</span>;</span></code></pre></div>
-<p>Get hourly data by variable and state:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb11-1"><a href="querying-napmd.html#cb11-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master</span>
-<span id="cb11-2"><a href="querying-napmd.html#cb11-2" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="op">=</span> <span class="st">&#39;SA&#39;</span></span>
-<span id="cb11-3"><a href="querying-napmd.html#cb11-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="op">=</span><span class="st">&#39;pm10&#39;</span>;</span></code></pre></div>
-<p>Get hourly data by variable for multiple states:</p>
+<span id="cb11-2"><a href="querying-napmd.html#cb11-2" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2020</span></span>
+<span id="cb11-3"><a href="querying-napmd.html#cb11-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="op">=</span><span class="st">&#39;no2&#39;</span>;</span></code></pre></div>
+<p>Get hourly data by variable and state:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb12-1"><a href="querying-napmd.html#cb12-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master</span>
-<span id="cb12-2"><a href="querying-napmd.html#cb12-2" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="kw">in</span> (<span class="st">&#39;SA&#39;</span>,<span class="st">&#39;VIC&#39;</span>)</span>
+<span id="cb12-2"><a href="querying-napmd.html#cb12-2" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="op">=</span> <span class="st">&#39;SA&#39;</span></span>
 <span id="cb12-3"><a href="querying-napmd.html#cb12-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="op">=</span><span class="st">&#39;pm10&#39;</span>;</span></code></pre></div>
-<p>Get hourly data by state for multiple variables:</p>
+<p>Get hourly data by variable for multiple states:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb13-1"><a href="querying-napmd.html#cb13-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master</span>
-<span id="cb13-2"><a href="querying-napmd.html#cb13-2" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="op">=</span> <span class="st">&#39;ACT&#39;</span></span>
-<span id="cb13-3"><a href="querying-napmd.html#cb13-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="kw">in</span> (<span class="st">&#39;no2&#39;</span>,<span class="st">&#39;o3&#39;</span>);<span class="ot">&quot;)</span></span></code></pre></div>
+<span id="cb13-2"><a href="querying-napmd.html#cb13-2" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="kw">in</span> (<span class="st">&#39;SA&#39;</span>,<span class="st">&#39;VIC&#39;</span>)</span>
+<span id="cb13-3"><a href="querying-napmd.html#cb13-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="op">=</span><span class="st">&#39;pm10&#39;</span>;</span></code></pre></div>
+<p>Get hourly data by state for multiple variables:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb14-1"><a href="querying-napmd.html#cb14-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master</span>
+<span id="cb14-2"><a href="querying-napmd.html#cb14-2" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="op">=</span> <span class="st">&#39;ACT&#39;</span></span>
+<span id="cb14-3"><a href="querying-napmd.html#cb14-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="kw">in</span> (<span class="st">&#39;no2&#39;</span>,<span class="st">&#39;o3&#39;</span>);<span class="ot">&quot;)</span></span></code></pre></div>
 <!-- ## Via pgAdmin 4 -->
 <!--  - Connect to the database instructions can be found [here][4]. -->
 <!--  - Query examples can be found [here][5] -->
