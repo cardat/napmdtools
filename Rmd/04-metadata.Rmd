@@ -1,5 +1,7 @@
 # Metadata
 
+Please note that NAPMD focusses on key air pollutants. Meteorological variables may not be complete. Data has undergone validation by state and territory agencies but may require further cleaning.
+
 ## Spatial coverage
 
 Station locations (see counts in Table \@ref(tab:tbl-num-stns)):
