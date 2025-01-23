@@ -1,3 +1,15 @@
+#' Get time range of monitor hourly data
+#' 
+#' Retrieve time range of available hourly data for specified station and variable.
+#'
+#' @param station_id Integer. NAPMD station ID number (see \code{\link{list_air_pollution_monitors}})
+#' @param variable Character. Variable name (see \code{\link{get_variables}})
+#' @param username NAPMD API username
+#' @param password NAPMD API password
+#'
+#' @return data.table
+#' @export
+#'
 get_times <- function(station_id = 453,
                       variable = "pm25",
                       username = api_key$username,

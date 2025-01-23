@@ -1,3 +1,14 @@
+#' Get monitor info
+#' 
+#' Retrieve station ID, name and spatial information for specified state. Latitudes and longitudes are given in GDA94 coordinate reference system (EPSG:4283).
+#'
+#' @param state Character. State abbreviation (one of "ACT", "NSW", "NT", "QLD", "SA", "TAS", "WA", "VIC").
+#' @param username NAPMD API username
+#' @param password NAPMD API password
+#'
+#' @return data.table
+#' @export
+#'
 list_air_pollution_monitors <- function(
     state="ACT"
     ,

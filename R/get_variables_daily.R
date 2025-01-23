@@ -1,3 +1,14 @@
+#' Get variables of monitor daily data
+#'
+#' Retrieve available variables and corresponding units of daily data for specified station.
+#'
+#' @param station_id Integer. NAPMD station ID number (see \code{\link{list_air_pollution_monitors}})
+#' @param username NAPMD API username
+#' @param password NAPMD API password
+#'
+#' @return data.table
+#' @export
+#' 
 get_variables_daily <- function(
     station_id = 300,
     username = api_key$username,

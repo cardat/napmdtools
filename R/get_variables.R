@@ -1,3 +1,14 @@
+#' Get variables of monitor hourly data
+#'
+#' Retrieve available variables of hourly data for specified station.
+#'
+#' @param station_id Integer. NAPMD station ID number (see \code{\link{list_air_pollution_monitors}})
+#' @param username NAPMD API username
+#' @param password NAPMD API password
+#'
+#' @return data.table
+#' @export
+#'
 get_variables <- function(
     station_id = 453,
     username = api_key$username,
