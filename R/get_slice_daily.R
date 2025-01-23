@@ -1,3 +1,16 @@
+#' Retrieve slice of NAPMD daily monitor data
+#'
+#' Retrieve daily monitor data from all stations for a specified state, variable and date.
+#'
+#' @param variable Character. Variable name (see \code{\link{get_variables_daily}})
+#' @param date Date format or character string in YYYY-MM-DD format.
+#' @param state Character. State abbreviation (one of "ACT", "NSW", "NT", "QLD", "SA", "TAS", "WA", "VIC").
+#' @param username NAPMD API username
+#' @param password NAPMD API password
+#'
+#' @return data.table
+#' @export
+#'
 get_slice_daily <- function(variable = "pm25"
                           ,
                           date = "2012-01-01"

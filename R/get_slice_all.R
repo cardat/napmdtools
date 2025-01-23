@@ -1,3 +1,16 @@
+#' Retrieve slice of NAPMD hourly monitor data
+#'
+#' Retrieve daily monitor data from all stations for a specified state, variable and date.
+#'
+#' @param variable Character. Variable name (see \code{\link{get_variables_daily}})
+#' @param time_utc Character string in YYYY-MM-DD HH:MM:SS format (UTC timezone)
+#' @param state Character. State abbreviation (one of "ACT", "NSW", "NT", "QLD", "SA", "TAS", "WA", "VIC").
+#' @param username NAPMD API username
+#' @param password NAPMD API password
+#'
+#' @return data.table
+#' @export
+#'
 get_slice_all <- function(variable = "pm25"
                           ,
                           time_utc = "2019-11-03 15:00:00"
