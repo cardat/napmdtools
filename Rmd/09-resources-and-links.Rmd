@@ -12,6 +12,19 @@
 
 The [National Environment Protection (Ambient Air Quality) Measure (NEPM)](https://www.legislation.gov.au/Series/F2007B01142) sets out air pollution concentration standards and averaging periods.
 
+The National Environment Protection Council (NEPC) reported annually on operations and effectiveness of NEPMs, compiled from the various states and territories. These reports may be found at https://www.nepc.gov.au/publications/annual-reports.
+
+NEPM compliance reports are published by states and territories on individual jurisdictional websites (to varying degrees of completeness):
+
+ - [ACT](https://www.accesscanberra.act.gov.au/city-services/reporting-pollution#Air-pollution)
+ - [NSW](https://www.environment.nsw.gov.au/node/47781)
+ - [NT](https://ntepa.nt.gov.au/your-environment/air-quality/ambient-air-quality-reports)
+ - [QLD](https://tinyurl.com/2a882bpf)
+ - [SA](https://www.epa.sa.gov.au/environmental_info/air_quality/reports_and_summaries)
+ - [TAS](https://epa.tas.gov.au/environment/air/monitoring-air-pollution/monitoring-data/reports-and-historical-data/annual-nepm-reports)
+ - [VIC](https://www.epa.vic.gov.au/search?q=Ambient%20Air%20Quality%20National%20Environment%20Protection%20Measure)
+ - [WA](https://www.wa.gov.au/government/document-collections/air-quality-publications#air-monitoring-reports-western-australia)
+
 ## State/Territory Live Air Quality
 
  - [ACT](https://www.act.gov.au/health/topics/air-quality-and-pollen/check-current-air-quality-readings-in-the-act)
