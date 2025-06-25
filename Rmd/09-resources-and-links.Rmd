@@ -8,10 +8,6 @@
  - [Centre for Safe Air][centre-air-home]
  - [WHO Collaborating Centre for Climate Change and Health Impact Assessment][whocc-cchia-home]
 
-## National Air Technical Advisory Group (NATAG)
-
-The [National Air Quality Technical Advisory Group (NATAG)][natag-home] is the national group who provides advice on air pollution policy and standards. Membership is drawn from state and territory agencies and the federal government.
-
 ## Air Quality Legislation
 
 The [National Environment Protection (Ambient Air Quality) Measure (NEPM)](https://www.legislation.gov.au/Series/F2007B01142) sets out air pollution concentration standards and averaging periods.
