@@ -42,7 +42,8 @@ This database was made possible through the fantastic co-operation, support and 
  - [Environmental Protection Authority Tasmania](https://epa.tas.gov.au/epa)
  - [WA Department of Water and Environmental Regulation](https://www.wa.gov.au/organisation/department-of-water-and-environmental-regulation)
  - [Environmental Protection Authority Victoria](https://www.epa.vic.gov.au)
- 
+
+We also thank the [Terrestrial Ecosystem Research Network (TERN)][tern-home] for providing the data infrastructure on which NAPMD is built.
   
 ## Funding {#funding}
 
@@ -55,6 +56,7 @@ With thanks to the [Centre for Safe Air][centre-air-home] and the [Australian Re
 [whocc-cchia-home]: https://research.curtin.edu.au/whocc-cchia/
 [ardc-home]: https://ardc.edu.au/
 [natag-home]: https://www.dcceew.gov.au/environment/protection/air-quality/national-clean-air-agreement/national-air-technical-advisory-group
+[tern-home]: https://www.tern.org.au/
 
 <!-- Repositories -->
 [cardatdbtools-repo]: https://github.com/cardat/cardatdbtools
