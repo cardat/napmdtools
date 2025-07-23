@@ -1,5 +1,12 @@
 # News
 
+## 2025-07-23
+
+ - Amended data for ACT, replacing misidentified rolling means with 1-hrly averaged data
+    - CO (replaced 8hr-rolling means with 1-hrly averages) for 2011 to 2020
+    - PM~10~ (replaced 24hr-rolling means with 1-hrly averages) for 2011 to 2020
+    - PM~2.5~ (replaced 24hr-rolling means with 1-hrly averages) for 2014 to 2020, removed 24hr-rolling means from 2013
+    
 ## 2024-11-18
 
  - Replaced 2020 QLD data with full year of validated data

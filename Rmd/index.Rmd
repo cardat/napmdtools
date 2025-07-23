@@ -1,5 +1,6 @@
 --- 
-title: "The National Air Pollution Monitoring Database (NAPMD) (Last edited on `r Sys.Date()`)"
+title: "The National Air Pollution Monitoring Database (NAPMD)"
+date: "Last edited on `r Sys.Date()`"
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
