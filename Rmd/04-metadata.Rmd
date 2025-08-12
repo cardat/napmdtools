@@ -95,7 +95,7 @@ DT::datatable(
   filter = "top",
   rownames = F,
   options = list(pageLength = 10),
-  caption = "Temporal coverage by station and variable"
+  caption = "Temporal coverage by state and variable"
 )
 
 ```
@@ -154,7 +154,7 @@ knitr::kable(dt.unit_conv, caption = "Conversion factors used for standardisatio
 
 ### Time basis (hour-ending/starting)
 
-The National Air Pollution Monitor Database converts all hourly data to be in 0-23 hour-beginning format (i.e. 0 represents midnight to 1am on the date specified). For different states and territories the source data can vary.
+The National Air Pollution Monitoring Database converts all hourly data to be in 0-23 hour-beginning format (i.e. 0 represents midnight to 1am on the date specified). For different states and territories the source data can vary.
 
 |State     | Data source                    | Time basis          |
 | -------- | ------------------------------ | ------------------- |

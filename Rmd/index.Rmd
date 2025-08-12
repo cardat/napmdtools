@@ -23,7 +23,7 @@ workdir <- "data"; if(!dir.exists(workdir)) dir.create(workdir)
 
 # Welcome
 
-Welcome to the Australian National Air Pollution Monitor Database (NAPMD). 
+Welcome to the Australian National Air Pollution Monitoring Database (NAPMD). 
 
 This database was consolidated by the [Clean Air and health Research Data and Analysis Technology (CARDAT)][cardat-home] platform, overseen by the [Centre for Safe Air (CSA)][centre-air-home] (formerly the Centre for Air pollution, energy and health Research (CAR)) and the [WHO Collaborating Centre for Climate Change and Health Impact Assessment][whocc-cchia-home]. It aims to standardise the national collection of data from all government air pollution monitors in Australia.
 
