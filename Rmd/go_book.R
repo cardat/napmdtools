@@ -8,6 +8,9 @@ library(data.table)
 library(sf)
 library(leaflet)
 
+# Retrieve station locations and date ranges from database ##
+# takes some processing time, so set to FALSE if no changes to data have been made
+# set to TRUE if database has been updated
 retrieve_fr_db <- FALSE
 
 # connect to database if retrieving info from DB (connect as NAPMD readonly user)
