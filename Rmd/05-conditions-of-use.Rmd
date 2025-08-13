@@ -102,7 +102,7 @@ Data is provided under [Creative Commons By Attribution 4.0 International licens
 
 **Disclaimer**
 
-[BLANkET monitor data][https://epa.tas.gov.au/environment/air/monitoring-air-pollution/monitoring-data/reports-and-historical-data/historical-blanket-data] (from DustTrak monitors) is 'level 0' data. It is automatically produced, has no human intervention, and only a few automated QA checks.
+[BLANkET monitor data](https://epa.tas.gov.au/environment/air/monitoring-air-pollution/monitoring-data/reports-and-historical-data/historical-blanket-data) (from DustTrak monitors) is 'level 0' data. It is automatically produced, has no human intervention, and only a few automated QA checks.
 
 **Conditions of use**
 
