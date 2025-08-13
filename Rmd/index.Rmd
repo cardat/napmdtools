@@ -52,7 +52,7 @@ With thanks to the [Centre for Safe Air][centre-air-home] and the [Australian Re
 
 <!-- Key organisations -->
 [cardat-home]: http://cardat.github.io/
-[cardat-email]: mailto:car.data@sydney.edu.au
+[cardat-email]: mailto:car.data@curtin.edu.au
 [centre-air-home]: https://safeair.org.au/
 [whocc-cchia-home]: https://research.curtin.edu.au/whocc-cchia/
 [ardc-home]: https://ardc.edu.au/
