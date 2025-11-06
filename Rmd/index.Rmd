@@ -50,14 +50,22 @@ We also thank the [Terrestrial Ecosystem Research Network (TERN)][tern-home] for
 
 With thanks to the [Centre for Safe Air][centre-air-home] and the [Australian Research Data Commons][ardc-home] for providing the funding to make the National Air Pollution Monitoring Database possible.
 
+
 <!-- Key organisations -->
+<!-- CARDAT pages -->
 [cardat-home]: http://cardat.github.io/
 [cardat-email]: mailto:car.data@curtin.edu.au
+[cardat-acknowledgements]: https://cardat.github.io/acknowledgements.html
+
+<!-- CARDAT umbrellas -->
 [centre-air-home]: https://safeair.org.au/
 [whocc-cchia-home]: https://research.curtin.edu.au/whocc-cchia/
+
+<!-- CARDAT friends -->
 [ardc-home]: https://ardc.edu.au/
 [natag-home]: https://www.dcceew.gov.au/environment/protection/air-quality/national-clean-air-agreement/national-air-technical-advisory-group
 [tern-home]: https://www.tern.org.au/
+
 
 <!-- Repositories -->
 [cardatdbtools-repo]: https://github.com/cardat/cardatdbtools

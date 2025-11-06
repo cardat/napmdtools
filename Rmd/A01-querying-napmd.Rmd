@@ -1,9 +1,5 @@
 # (APPENDIX) Appendix {-}
 
-```{r setup-appendix}
-knitr::opts_chunk$set(eval = F, echo = T)
-```
-
 # Querying NAPMD
 
 NAPMD can be accessed via:
@@ -21,7 +17,7 @@ The instructions that follow are aimed primarily at `R` users. To use `R`, you w
 
 Connect to the database with the following:
 
-```{r example-r-dbconn}
+```{r example-r-dbconn, eval = F, echo = T}
 # Load RPostgreSQL library
 require("RPostgreSQL")
 
@@ -44,7 +40,7 @@ remove(postgres_pwd)
 
 Once connect, use the `dbGetQuery` function to query with the database using SQL. For example:
 
-```{r example-r-dbquery}
+```{r example-r-dbquery, eval = F, echo = T}
 
 df.mons  <- dbGetQuery(ch, "SELECT * from air_pollution_monitors.ap_monitor_data_master 
                        where state = 'SA'
@@ -54,7 +50,7 @@ df.mons  <- dbGetQuery(ch, "SELECT * from air_pollution_monitors.ap_monitor_data
 
 For geospatial work, you can read the locations tables directly into an `sf` or `SpatVector` (`terra`) object through the `rpostgis` package:
 
-```{r example-rpostgis}
+```{r example-rpostgis, eval = F, echo = T}
 library(rpostgis)
 # read as sf object
 sf.mons <- rpostgis::pgGetGeom(ch, 
@@ -77,7 +73,7 @@ Please note the table include latitude and longitude (EPSG:4283) fields. Geometr
 
 To get specific state/territory information, query the individual state/territory table.
 
-```{sql qry-state-locs}
+```{sql qry-state-locs, eval = F, echo = T}
 SELECT * 
 FROM air_pollution_monitors.ap_monitor_locations_nsw
 LIMIT 10;
@@ -85,7 +81,7 @@ LIMIT 10;
 
 Or query for all states and territories, retrieving common fields
 
-```{sql qry-all-locs}
+```{sql qry-all-locs, eval = F, echo = T}
 SELECT * 
 FROM air_pollution_monitors.ap_monitor_locations_master
 LIMIT 10;
@@ -95,7 +91,7 @@ LIMIT 10;
 
 Get all stations by variable:
 
-```{sql qry-stns-by-var}
+```{sql qry-stns-by-var, eval = F, echo = T}
 SELECT l.* 
 FROM air_pollution_monitors.ap_monitor_locations_master l
 WHERE l.station_id IN 
@@ -106,7 +102,7 @@ WHERE l.station_id IN
 
 Get all stations by year and variable:
  
-```{sql qry-stns-by-yr-var}
+```{sql qry-stns-by-yr-var, eval = F, echo = T}
 SELECT l.* 
 FROM air_pollution_monitors.ap_monitor_locations_master l
 WHERE l.station_id IN 
@@ -118,7 +114,7 @@ WHERE l.station_id IN
 
 Get stations by variable, year and state
 
-```{sql qry-stns-by-state-yr-var}
+```{sql qry-stns-by-state-yr-var, eval = F, echo = T}
 SELECT l.* 
 FROM air_pollution_monitors.ap_monitor_locations_sa l
 WHERE EXISTS 
@@ -131,33 +127,33 @@ ORDER BY l.station DESC;
 ### Observation data
 
 Get hourly data by state and year (fastest to query the child table):
-```{sql qry-obs-by-state-year}
+```{sql qry-obs-by-state-year, eval = F, echo = T}
 SELECT * FROM air_pollution_monitors.ap_monitor_data_wa_2020;
 ```
 
 Get hourly data by year and variable:
-```{sql qry-obs-by-var-year}
+```{sql qry-obs-by-var-year, eval = F, echo = T}
 SELECT * FROM air_pollution_monitors.ap_monitor_data_master
 WHERE year = 2020
 AND variable ='no2';
 ```
 
 Get hourly data by variable and state:
-```{sql qry-obs-by-var-state}
+```{sql qry-obs-by-var-state, eval = F, echo = T}
 SELECT * FROM air_pollution_monitors.ap_monitor_data_master
 WHERE state = 'SA'
 AND variable ='pm10';
 ```
 
 Get hourly data by variable for multiple states:
-```{sql qry-obs-by-var-states}
+```{sql qry-obs-by-var-states, eval = F, echo = T}
 SELECT * FROM air_pollution_monitors.ap_monitor_data_master
 WHERE state in ('SA','VIC')
 AND variable ='pm10';
 ```
 
 Get hourly data by state for multiple variables:
-```{sql qry-obs-by-state-vars}
+```{sql qry-obs-by-state-vars, eval = F, echo = T}
 SELECT * FROM air_pollution_monitors.ap_monitor_data_master
 WHERE state = 'ACT'
 AND variable in ('no2','o3');")

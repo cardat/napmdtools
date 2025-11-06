@@ -12,7 +12,7 @@ Data in NAPMD is subject to change as new, updated or amended data becomes avail
 
 In your publications using these data please remember to abide by the [conditions of use](#conditions-of-use), in particular:
 
- - cite the National Air Pollution Monitoring Database
+ - cite the National Air Pollution Monitoring Database and acknowledge the CARDAT platform
  - [contact Tas EPA][tas-contact] to confirm usage is acceptable (if [using Tasmanian data](#tas-conditions))
  - cite the relevant NSW paper (if [using NSW data](#nsw-conditions))
  - [report usage back to us][cardat-email] so we can let the relevant state and territory organisations know how their data are being used 
