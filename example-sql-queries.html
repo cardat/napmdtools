@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Using NAPMD | The National Air Pollution Monitoring Database (NAPMD)</title>
-  <meta name="description" content="6 Using NAPMD | The National Air Pollution Monitoring Database (NAPMD)" />
+  <title>B Example SQL queries | The National Air Pollution Monitoring Database (NAPMD)</title>
+  <meta name="description" content="B Example SQL queries | The National Air Pollution Monitoring Database (NAPMD)" />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Using NAPMD | The National Air Pollution Monitoring Database (NAPMD)" />
+  <meta property="og:title" content="B Example SQL queries | The National Air Pollution Monitoring Database (NAPMD)" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Using NAPMD | The National Air Pollution Monitoring Database (NAPMD)" />
+  <meta name="twitter:title" content="B Example SQL queries | The National Air Pollution Monitoring Database (NAPMD)" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="conditions-of-use.html"/>
-<link rel="next" href="data-discrepancies.html"/>
+<link rel="prev" href="connecting-to-napmd.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -248,37 +248,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-napmd" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">6</span> Using NAPMD<a href="using-napmd.html#using-napmd" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The NAPMD is freely available to researchers. Access is granted individually on <a href="mailto:car.data@curtin.edu.au">request to CARDAT</a> - please put NAPMD access in the subject line to assist with granting access sooner. You will be asked to read and acknowledge <a href="conditions-of-use.html#conditions-of-use">conditions of use and disclaimers</a> prior to being given access.</p>
-<div id="accessing-the-database" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Accessing the database<a href="using-napmd.html#accessing-the-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Users can choose between an API login or a database login. The API allows for easier but less flexible retrieval of data by providing specific parameters (e.g. station ID, parameter name, datetime). Using a database connection is more flexible but requires knowledge of SQL queries. See the <a href="#querying-napmd">Appendix</a> for <code>R</code> (API functions) and <code>SQL</code> (database queries) code snippets.</p>
-<p>Data in NAPMD is subject to change as new, updated or amended data becomes available. We strongly recommend you save a copy of extracted data for your analysis if reproducibility is required.</p>
+<div id="example-sql-queries" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">B</span> Example SQL queries<a href="example-sql-queries.html#example-sql-queries" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="station-locations-1" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">B.1</span> Station locations<a href="example-sql-queries.html#station-locations-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Please note the table include latitude and longitude (EPSG:4283) fields. Geometry is stored using the PostGIS extension in the <code>geom_gda94</code> (EPSG:4283) and <code>geom_albers</code> (EPSG:3577) columns.</p>
+<p>To get specific state/territory information, query the individual state/territory table.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="example-sql-queries.html#cb5-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb5-2"><a href="example-sql-queries.html#cb5-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_nsw</span>
+<span id="cb5-3"><a href="example-sql-queries.html#cb5-3" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<p>Or query for all states and territories, retrieving common fields</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb6-1"><a href="example-sql-queries.html#cb6-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb6-2"><a href="example-sql-queries.html#cb6-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_master</span>
+<span id="cb6-3"><a href="example-sql-queries.html#cb6-3" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
 </div>
-<div id="cite-the-data-and-report-outcomes" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Cite the data and report outcomes<a href="using-napmd.html#cite-the-data-and-report-outcomes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In your publications using these data please remember to abide by the <a href="conditions-of-use.html#conditions-of-use">conditions of use</a>, in particular:</p>
-<ul>
-<li>cite the National Air Pollution Monitoring Database and acknowledge the CARDAT platform</li>
-<li><a href="mailto:air@epa.tas.gov.au">contact Tas EPA</a> to confirm usage is acceptable (if <a href="conditions-of-use.html#tas-conditions">using Tasmanian data</a>)</li>
-<li>cite the relevant NSW paper (if <a href="conditions-of-use.html#nsw-conditions">using NSW data</a>)</li>
-<li><a href="mailto:car.data@curtin.edu.au">report usage back to us</a> so we can let the relevant state and territory organisations know how their data are being used</li>
-</ul>
+<div id="query-for-selected-station-locations" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">B.2</span> Query for selected station locations<a href="example-sql-queries.html#query-for-selected-station-locations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Get all stations by variable:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb7-1"><a href="example-sql-queries.html#cb7-1" tabindex="-1"></a><span class="kw">SELECT</span> l.<span class="op">*</span> </span>
+<span id="cb7-2"><a href="example-sql-queries.html#cb7-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_master l</span>
+<span id="cb7-3"><a href="example-sql-queries.html#cb7-3" tabindex="-1"></a><span class="kw">WHERE</span> l.station_id <span class="kw">IN</span> </span>
+<span id="cb7-4"><a href="example-sql-queries.html#cb7-4" tabindex="-1"></a>(<span class="kw">SELECT</span> d.station_id </span>
+<span id="cb7-5"><a href="example-sql-queries.html#cb7-5" tabindex="-1"></a> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master d</span>
+<span id="cb7-6"><a href="example-sql-queries.html#cb7-6" tabindex="-1"></a> <span class="kw">WHERE</span> d.variable <span class="op">=</span><span class="st">&#39;co&#39;</span>);</span></code></pre></div>
+<p>Get all stations by year and variable:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb8-1"><a href="example-sql-queries.html#cb8-1" tabindex="-1"></a><span class="kw">SELECT</span> l.<span class="op">*</span> </span>
+<span id="cb8-2"><a href="example-sql-queries.html#cb8-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_master l</span>
+<span id="cb8-3"><a href="example-sql-queries.html#cb8-3" tabindex="-1"></a><span class="kw">WHERE</span> l.station_id <span class="kw">IN</span> </span>
+<span id="cb8-4"><a href="example-sql-queries.html#cb8-4" tabindex="-1"></a>(<span class="kw">SELECT</span> d.station_id </span>
+<span id="cb8-5"><a href="example-sql-queries.html#cb8-5" tabindex="-1"></a> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master d</span>
+<span id="cb8-6"><a href="example-sql-queries.html#cb8-6" tabindex="-1"></a> <span class="kw">WHERE</span> d.<span class="dt">year</span> <span class="op">=</span> <span class="dv">2010</span></span>
+<span id="cb8-7"><a href="example-sql-queries.html#cb8-7" tabindex="-1"></a> <span class="kw">AND</span> d.variable <span class="op">=</span><span class="st">&#39;co&#39;</span>);</span></code></pre></div>
+<p>Get stations by variable, year and state</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb9-1"><a href="example-sql-queries.html#cb9-1" tabindex="-1"></a><span class="kw">SELECT</span> l.<span class="op">*</span> </span>
+<span id="cb9-2"><a href="example-sql-queries.html#cb9-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_sa l</span>
+<span id="cb9-3"><a href="example-sql-queries.html#cb9-3" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">EXISTS</span> </span>
+<span id="cb9-4"><a href="example-sql-queries.html#cb9-4" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="dv">1</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_sa_2015 d</span>
+<span id="cb9-5"><a href="example-sql-queries.html#cb9-5" tabindex="-1"></a>     <span class="kw">WHERE</span> l.station_id <span class="op">=</span> d.station_id</span>
+<span id="cb9-6"><a href="example-sql-queries.html#cb9-6" tabindex="-1"></a>     <span class="kw">AND</span> d.variable <span class="op">=</span><span class="st">&#39;pm25&#39;</span>)</span>
+<span id="cb9-7"><a href="example-sql-queries.html#cb9-7" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> l.station <span class="kw">DESC</span>;</span></code></pre></div>
 </div>
-<div id="using-the-database" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Using the database<a href="using-napmd.html#using-the-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Air pollution data is stored in the database in tables by state and year. If you are querying the database directly, you will most usually want to access more than one state’s or year’s worth of data at once, which can be done via the following tables:</p>
-<ul>
-<li>ap_monitor_data_master: 1-hrly averaged data</li>
-<li>ap_monitor_data_daily_master: daily averaged data (available where hourly averaged data is not available)</li>
-<li>ap_monitor_locations_master: station location data</li>
-</ul>
-<p>For recent years, most data is available by hour only and is not included in the daily averaged data. The exception is Tasmanian data, which provides daily averages from the BlanKeT network. The daily data table also include historical data that is otherwise not available by hour.</p>
-</div>
-<div id="questions-about-the-data-and-reporting-improbable-values" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Questions about the data, and reporting improbable values<a href="using-napmd.html#questions-about-the-data-and-reporting-improbable-values" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The NAPMD is a collaborative database between the <a href="index.html#acknowledgements">state and territory governments</a>, the <a href="https://safeair.org.au/">Centre for Safe Air</a> and our users. We ask that you <a href="mailto:car.data@curtin.edu.au">contact us</a> with any question about the data or improbable values you find so that we can ensure the data is being used in a fit for purpose manner and is of the highest quality.</p>
+<div id="observation-data" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">B.3</span> Observation data<a href="example-sql-queries.html#observation-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Get hourly data by state and year (fastest to query the child table):</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb10-1"><a href="example-sql-queries.html#cb10-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_wa_2020;</span></code></pre></div>
+<p>Get hourly data by year and variable:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb11-1"><a href="example-sql-queries.html#cb11-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master</span>
+<span id="cb11-2"><a href="example-sql-queries.html#cb11-2" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2020</span></span>
+<span id="cb11-3"><a href="example-sql-queries.html#cb11-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="op">=</span><span class="st">&#39;no2&#39;</span>;</span></code></pre></div>
+<p>Get hourly data by variable and state:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb12-1"><a href="example-sql-queries.html#cb12-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master</span>
+<span id="cb12-2"><a href="example-sql-queries.html#cb12-2" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="op">=</span> <span class="st">&#39;SA&#39;</span></span>
+<span id="cb12-3"><a href="example-sql-queries.html#cb12-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="op">=</span><span class="st">&#39;pm10&#39;</span>;</span></code></pre></div>
+<p>Get hourly data by variable for multiple states:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb13-1"><a href="example-sql-queries.html#cb13-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master</span>
+<span id="cb13-2"><a href="example-sql-queries.html#cb13-2" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="kw">in</span> (<span class="st">&#39;SA&#39;</span>,<span class="st">&#39;VIC&#39;</span>)</span>
+<span id="cb13-3"><a href="example-sql-queries.html#cb13-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="op">=</span><span class="st">&#39;pm10&#39;</span>;</span></code></pre></div>
+<p>Get hourly data by state for multiple variables:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb14-1"><a href="example-sql-queries.html#cb14-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master</span>
+<span id="cb14-2"><a href="example-sql-queries.html#cb14-2" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="op">=</span> <span class="st">&#39;ACT&#39;</span></span>
+<span id="cb14-3"><a href="example-sql-queries.html#cb14-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="kw">in</span> (<span class="st">&#39;no2&#39;</span>,<span class="st">&#39;o3&#39;</span>);<span class="ot">&quot;)</span></span></code></pre></div>
 
 </div>
 </div>
@@ -287,8 +316,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="conditions-of-use.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-discrepancies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="connecting-to-napmd.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

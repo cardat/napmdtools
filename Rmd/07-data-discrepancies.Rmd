@@ -1,0 +1,27 @@
+# Data discrepancies
+
+Data values in NAPMD is generally presented as provided by the state and territory agencies, with alterations made only for formatting and standardisation of units. Values may differ from those currently available from the source agencies if data has been updated since received by NAPMD.
+
+Please note that though most data has undergone validation by the state and territory agencies, there may be unrealistic or improbable values resulting from instrument failure. Conduct your own data checks and consider what range of values you consider to be reasonable for your pollutant of interest.
+
+## Specific changes to historical ACT data
+
+1. Duplicated hourly data for 2020-02-29
+
+The duplicate hourly values which are not identical have been averaged.
+
+2. Exceptionally high NO~2~ for Civic station, February 2003
+
+There were 5 NO2 readings for Civic Feb 2003 which were exceptionally high – these were removed after a discussion with ACT Health and it was agreed that they were improbable and likely caused by a glitch in the equipment (which was serviced shortly after this period).
+
+| Date	| Hour | NO2 |
+|--------|----------|---------|
+| 2003/02/03 | 21:00:00	| 1.673 |
+| 2003/02/03 | 17:00:00	| 1.348 |
+| 2003/02/03 | 18:00:00 | 0.958 |
+| 2003/02/03 | 19:00:00	| 0.673 |
+| 2003/02/03 | 20:00:00 | 0.530 |
+
+3. Spurious nephelometer values in 2011/2012
+
+There were a series of 0 or 9999 values for nephelometer readings in 2011/2012. ACT stopped measuring visibility around this time, so these values are most likely spurious (in any case, not useful). All of these were dropped.

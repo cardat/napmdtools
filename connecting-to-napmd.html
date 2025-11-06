@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Using NAPMD | The National Air Pollution Monitoring Database (NAPMD)</title>
-  <meta name="description" content="6 Using NAPMD | The National Air Pollution Monitoring Database (NAPMD)" />
+  <title>A Connecting to NAPMD | The National Air Pollution Monitoring Database (NAPMD)</title>
+  <meta name="description" content="A Connecting to NAPMD | The National Air Pollution Monitoring Database (NAPMD)" />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Using NAPMD | The National Air Pollution Monitoring Database (NAPMD)" />
+  <meta property="og:title" content="A Connecting to NAPMD | The National Air Pollution Monitoring Database (NAPMD)" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Using NAPMD | The National Air Pollution Monitoring Database (NAPMD)" />
+  <meta name="twitter:title" content="A Connecting to NAPMD | The National Air Pollution Monitoring Database (NAPMD)" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="conditions-of-use.html"/>
-<link rel="next" href="data-discrepancies.html"/>
+<link rel="prev" href="resources-and-links.html"/>
+<link rel="next" href="example-sql-queries.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -248,37 +248,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-napmd" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">6</span> Using NAPMD<a href="using-napmd.html#using-napmd" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The NAPMD is freely available to researchers. Access is granted individually on <a href="mailto:car.data@curtin.edu.au">request to CARDAT</a> - please put NAPMD access in the subject line to assist with granting access sooner. You will be asked to read and acknowledge <a href="conditions-of-use.html#conditions-of-use">conditions of use and disclaimers</a> prior to being given access.</p>
-<div id="accessing-the-database" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Accessing the database<a href="using-napmd.html#accessing-the-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Users can choose between an API login or a database login. The API allows for easier but less flexible retrieval of data by providing specific parameters (e.g. station ID, parameter name, datetime). Using a database connection is more flexible but requires knowledge of SQL queries. See the <a href="#querying-napmd">Appendix</a> for <code>R</code> (API functions) and <code>SQL</code> (database queries) code snippets.</p>
-<p>Data in NAPMD is subject to change as new, updated or amended data becomes available. We strongly recommend you save a copy of extracted data for your analysis if reproducibility is required.</p>
-</div>
-<div id="cite-the-data-and-report-outcomes" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Cite the data and report outcomes<a href="using-napmd.html#cite-the-data-and-report-outcomes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In your publications using these data please remember to abide by the <a href="conditions-of-use.html#conditions-of-use">conditions of use</a>, in particular:</p>
+<div id="connecting-to-napmd" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">A</span> Connecting to NAPMD<a href="connecting-to-napmd.html#connecting-to-napmd" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>NAPMD can be accessed via:</p>
 <ul>
-<li>cite the National Air Pollution Monitoring Database and acknowledge the CARDAT platform</li>
-<li><a href="mailto:air@epa.tas.gov.au">contact Tas EPA</a> to confirm usage is acceptable (if <a href="conditions-of-use.html#tas-conditions">using Tasmanian data</a>)</li>
-<li>cite the relevant NSW paper (if <a href="conditions-of-use.html#nsw-conditions">using NSW data</a>)</li>
-<li><a href="mailto:car.data@curtin.edu.au">report usage back to us</a> so we can let the relevant state and territory organisations know how their data are being used</li>
+<li>an API (requiring an API username and password), or</li>
+<li>Postgres connection (requiring a database username and password).</li>
 </ul>
+<p>The instructions that follow are aimed primarily at <code>R</code> users. To use <code>R</code>, you will need to install both <a href="https://www.r-project.org/">R</a> and <a href="https://posit.co/download/rstudio-desktop/">RStudio</a>.</p>
+<div id="using-api-with-r-napmdtools-package" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">A.1</span> Using API with R <code>napmdtools</code> package<a href="connecting-to-napmd.html#using-api-with-r-napmdtools-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>R</code> functions that interface with the NAPMD API can be found in the <code>napmdtools</code> package. See the package repository and instructions <a href="https://github.com/cardat/napmdtools">here</a>.</p>
 </div>
-<div id="using-the-database" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Using the database<a href="using-napmd.html#using-the-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Air pollution data is stored in the database in tables by state and year. If you are querying the database directly, you will most usually want to access more than one state’s or year’s worth of data at once, which can be done via the following tables:</p>
-<ul>
-<li>ap_monitor_data_master: 1-hrly averaged data</li>
-<li>ap_monitor_data_daily_master: daily averaged data (available where hourly averaged data is not available)</li>
-<li>ap_monitor_locations_master: station location data</li>
-</ul>
-<p>For recent years, most data is available by hour only and is not included in the daily averaged data. The exception is Tasmanian data, which provides daily averages from the BlanKeT network. The daily data table also include historical data that is otherwise not available by hour.</p>
+<div id="via-db-connection-with-r-rpostgresql-package" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">A.2</span> Via DB connection with R <code>RPostgreSQL</code> package<a href="connecting-to-napmd.html#via-db-connection-with-r-rpostgresql-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Connect to the database with the following:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="connecting-to-napmd.html#cb2-1" tabindex="-1"></a><span class="co"># Load RPostgreSQL library</span></span>
+<span id="cb2-2"><a href="connecting-to-napmd.html#cb2-2" tabindex="-1"></a><span class="fu">require</span>(<span class="st">&quot;RPostgreSQL&quot;</span>)</span>
+<span id="cb2-3"><a href="connecting-to-napmd.html#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="connecting-to-napmd.html#cb2-4" tabindex="-1"></a><span class="co"># Load the PostgreSQL driver</span></span>
+<span id="cb2-5"><a href="connecting-to-napmd.html#cb2-5" tabindex="-1"></a>drv <span class="ot">&lt;-</span> <span class="fu">dbDriver</span>(<span class="st">&quot;PostgreSQL&quot;</span>)</span>
+<span id="cb2-6"><a href="connecting-to-napmd.html#cb2-6" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="connecting-to-napmd.html#cb2-7" tabindex="-1"></a><span class="do">## create your password</span></span>
+<span id="cb2-8"><a href="connecting-to-napmd.html#cb2-8" tabindex="-1"></a><span class="do">## Either (</span><span class="al">NOTE</span><span class="do">: this window can open in the background, so you might need to minimise RStudio to see it.</span></span>
+<span id="cb2-9"><a href="connecting-to-napmd.html#cb2-9" tabindex="-1"></a>postgres_pwd <span class="ot">&lt;-</span> askpass<span class="sc">::</span><span class="fu">askpass</span>(<span class="at">prompt =</span> <span class="st">&quot;Please enter your password: &quot;</span>)</span>
+<span id="cb2-10"><a href="connecting-to-napmd.html#cb2-10" tabindex="-1"></a><span class="do">## OR</span></span>
+<span id="cb2-11"><a href="connecting-to-napmd.html#cb2-11" tabindex="-1"></a><span class="co"># postgres_pwd &lt;- &quot;&lt;your_password&gt;&quot;</span></span>
+<span id="cb2-12"><a href="connecting-to-napmd.html#cb2-12" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="connecting-to-napmd.html#cb2-13" tabindex="-1"></a><span class="do">## Create a connection to the postgres database </span></span>
+<span id="cb2-14"><a href="connecting-to-napmd.html#cb2-14" tabindex="-1"></a>ch <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(drv, <span class="at">dbname =</span> <span class="st">&quot;postgis_car&quot;</span>,</span>
+<span id="cb2-15"><a href="connecting-to-napmd.html#cb2-15" tabindex="-1"></a>                <span class="at">host =</span> <span class="st">&quot;&lt;server_name&gt;&quot;</span>, <span class="at">port =</span> <span class="dv">5432</span>,</span>
+<span id="cb2-16"><a href="connecting-to-napmd.html#cb2-16" tabindex="-1"></a>                <span class="at">user =</span> <span class="st">&quot;&lt;user_name&gt;&quot;</span>, <span class="at">password =</span> postgres_pwd)</span>
+<span id="cb2-17"><a href="connecting-to-napmd.html#cb2-17" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="connecting-to-napmd.html#cb2-18" tabindex="-1"></a><span class="fu">remove</span>(postgres_pwd)</span></code></pre></div>
+<p>Once connect, use the <code>dbGetQuery</code> function to query with the database using SQL. For example:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="connecting-to-napmd.html#cb3-1" tabindex="-1"></a>df.mons  <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(ch, <span class="st">&quot;SELECT * from air_pollution_monitors.ap_monitor_data_master </span></span>
+<span id="cb3-2"><a href="connecting-to-napmd.html#cb3-2" tabindex="-1"></a><span class="st">                       where state = &#39;SA&#39;</span></span>
+<span id="cb3-3"><a href="connecting-to-napmd.html#cb3-3" tabindex="-1"></a><span class="st">                       limit 100;&quot;</span>)</span></code></pre></div>
+<p>For geospatial work, you can read the locations tables directly into an <code>sf</code> or <code>SpatVector</code> (<code>terra</code>) object through the <code>rpostgis</code> package:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="connecting-to-napmd.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(rpostgis)</span>
+<span id="cb4-2"><a href="connecting-to-napmd.html#cb4-2" tabindex="-1"></a><span class="co"># read as sf object</span></span>
+<span id="cb4-3"><a href="connecting-to-napmd.html#cb4-3" tabindex="-1"></a>sf.mons <span class="ot">&lt;-</span> rpostgis<span class="sc">::</span><span class="fu">pgGetGeom</span>(ch, </span>
+<span id="cb4-4"><a href="connecting-to-napmd.html#cb4-4" tabindex="-1"></a>                               <span class="fu">c</span>(<span class="st">&quot;air_pollution_monitors&quot;</span>, <span class="st">&quot;ap_monitor_locations_act&quot;</span>), </span>
+<span id="cb4-5"><a href="connecting-to-napmd.html#cb4-5" tabindex="-1"></a>                               <span class="at">geom =</span> <span class="st">&quot;geom_gda94&quot;</span>,</span>
+<span id="cb4-6"><a href="connecting-to-napmd.html#cb4-6" tabindex="-1"></a>                               <span class="at">returnclass =</span> <span class="st">&quot;sf&quot;</span>)</span>
+<span id="cb4-7"><a href="connecting-to-napmd.html#cb4-7" tabindex="-1"></a><span class="co"># or as terra SpatVector</span></span>
+<span id="cb4-8"><a href="connecting-to-napmd.html#cb4-8" tabindex="-1"></a>v.mons <span class="ot">&lt;-</span> rpostgis<span class="sc">::</span><span class="fu">pgGetGeom</span>(ch, </span>
+<span id="cb4-9"><a href="connecting-to-napmd.html#cb4-9" tabindex="-1"></a>                              <span class="fu">c</span>(<span class="st">&quot;air_pollution_monitors&quot;</span>, <span class="st">&quot;ap_monitor_locations_act&quot;</span>), </span>
+<span id="cb4-10"><a href="connecting-to-napmd.html#cb4-10" tabindex="-1"></a>                              <span class="at">geom =</span> <span class="st">&quot;geom_gda94&quot;</span>,</span>
+<span id="cb4-11"><a href="connecting-to-napmd.html#cb4-11" tabindex="-1"></a>                              <span class="at">returnclass =</span> <span class="st">&quot;terra&quot;</span>)</span></code></pre></div>
 </div>
-<div id="questions-about-the-data-and-reporting-improbable-values" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Questions about the data, and reporting improbable values<a href="using-napmd.html#questions-about-the-data-and-reporting-improbable-values" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The NAPMD is a collaborative database between the <a href="index.html#acknowledgements">state and territory governments</a>, the <a href="https://safeair.org.au/">Centre for Safe Air</a> and our users. We ask that you <a href="mailto:car.data@curtin.edu.au">contact us</a> with any question about the data or improbable values you find so that we can ensure the data is being used in a fit for purpose manner and is of the highest quality.</p>
+<div id="via-pgadmin-4" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">A.3</span> Via pgAdmin 4<a href="connecting-to-napmd.html#via-pgadmin-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Download and install PGAdmin 4 <a href="https://www.pgadmin.org/download/" class="uri">https://www.pgadmin.org/download/</a></li>
+<li>Run PGAdmin 4</li>
+<li>In the left sidebar, right-click on <code>Servers</code> -&gt; <code>Create</code> -&gt; <code>Server...</code></li>
+<li>Name the Server in the General Tab</li>
+<li>In the Connections tab fill in the following details, replacing <Host name/address>, <Username> and <Password> with the credentials given to you. Then save the changes.</li>
+</ol>
+<p>You may then navigate using the tree in the left sidebar. Find the <code>air_pollution_monitors</code> schema in the Schemas list.</p>
+<p>To run SQL queries, open the Query Tool (<code>Tools</code> &gt; <code>Query Tool</code> in the top menu, or right-click a schema or table and click <code>Query Tool</code>). Run your query with the <code>Execute/Refresh</code> button (shortcut key <code>F5</code>) above the top-right pane. Save query results with the <code>Save results to file</code> button (shortcut key <code>F8</code>).</p>
 
 </div>
 </div>
@@ -287,8 +317,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="conditions-of-use.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-discrepancies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="resources-and-links.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="example-sql-queries.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

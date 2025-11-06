@@ -1,0 +1,95 @@
+
+# Example SQL queries
+
+## Station locations
+
+Please note the table include latitude and longitude (EPSG:4283) fields. Geometry is stored using the PostGIS extension in the `geom_gda94` (EPSG:4283) and `geom_albers` (EPSG:3577) columns.
+
+To get specific state/territory information, query the individual state/territory table.
+
+```{sql qry-state-locs, eval = F, echo = T}
+SELECT * 
+FROM air_pollution_monitors.ap_monitor_locations_nsw
+LIMIT 10;
+```
+
+Or query for all states and territories, retrieving common fields
+
+```{sql qry-all-locs, eval = F, echo = T}
+SELECT * 
+FROM air_pollution_monitors.ap_monitor_locations_master
+LIMIT 10;
+```
+
+## Query for selected station locations
+
+Get all stations by variable:
+
+```{sql qry-stns-by-var, eval = F, echo = T}
+SELECT l.* 
+FROM air_pollution_monitors.ap_monitor_locations_master l
+WHERE l.station_id IN 
+(SELECT d.station_id 
+ FROM air_pollution_monitors.ap_monitor_data_master d
+ WHERE d.variable ='co');
+```
+
+Get all stations by year and variable:
+ 
+```{sql qry-stns-by-yr-var, eval = F, echo = T}
+SELECT l.* 
+FROM air_pollution_monitors.ap_monitor_locations_master l
+WHERE l.station_id IN 
+(SELECT d.station_id 
+ FROM air_pollution_monitors.ap_monitor_data_master d
+ WHERE d.year = 2010
+ AND d.variable ='co');
+```
+
+Get stations by variable, year and state
+
+```{sql qry-stns-by-state-yr-var, eval = F, echo = T}
+SELECT l.* 
+FROM air_pollution_monitors.ap_monitor_locations_sa l
+WHERE EXISTS 
+	(SELECT 1 FROM air_pollution_monitors.ap_monitor_data_sa_2015 d
+	 WHERE l.station_id = d.station_id
+	 AND d.variable ='pm25')
+ORDER BY l.station DESC;
+```
+
+## Observation data
+
+Get hourly data by state and year (fastest to query the child table):
+```{sql qry-obs-by-state-year, eval = F, echo = T}
+SELECT * FROM air_pollution_monitors.ap_monitor_data_wa_2020;
+```
+
+Get hourly data by year and variable:
+```{sql qry-obs-by-var-year, eval = F, echo = T}
+SELECT * FROM air_pollution_monitors.ap_monitor_data_master
+WHERE year = 2020
+AND variable ='no2';
+```
+
+Get hourly data by variable and state:
+```{sql qry-obs-by-var-state, eval = F, echo = T}
+SELECT * FROM air_pollution_monitors.ap_monitor_data_master
+WHERE state = 'SA'
+AND variable ='pm10';
+```
+
+Get hourly data by variable for multiple states:
+```{sql qry-obs-by-var-states, eval = F, echo = T}
+SELECT * FROM air_pollution_monitors.ap_monitor_data_master
+WHERE state in ('SA','VIC')
+AND variable ='pm10';
+```
+
+Get hourly data by state for multiple variables:
+```{sql qry-obs-by-state-vars, eval = F, echo = T}
+SELECT * FROM air_pollution_monitors.ap_monitor_data_master
+WHERE state = 'ACT'
+AND variable in ('no2','o3');")
+```
+

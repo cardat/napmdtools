@@ -1,0 +1,81 @@
+# (APPENDIX) Appendix {-}
+
+# Connecting to NAPMD
+
+NAPMD can be accessed via:
+
+- an API (requiring an API username and password), or 
+- Postgres connection (requiring a database username and password).
+
+The instructions that follow are aimed primarily at `R` users. To use `R`, you will need to install both [R](https://www.r-project.org/) and [RStudio](https://posit.co/download/rstudio-desktop/).
+
+## Using API with R `napmdtools` package
+
+`R` functions that interface with the NAPMD API can be found in the `napmdtools` package. See the package repository and instructions [here][napmdtools-repo].
+
+## Via DB connection with R `RPostgreSQL` package
+
+Connect to the database with the following:
+
+```{r example-r-dbconn, eval = F, echo = T}
+# Load RPostgreSQL library
+require("RPostgreSQL")
+
+# Load the PostgreSQL driver
+drv <- dbDriver("PostgreSQL")
+
+## create your password
+## Either (NOTE: this window can open in the background, so you might need to minimise RStudio to see it.
+postgres_pwd <- askpass::askpass(prompt = "Please enter your password: ")
+## OR
+# postgres_pwd <- "<your_password>"
+
+## Create a connection to the postgres database 
+ch <- dbConnect(drv, dbname = "postgis_car",
+                host = "<server_name>", port = 5432,
+                user = "<user_name>", password = postgres_pwd)
+
+remove(postgres_pwd)
+```
+
+Once connect, use the `dbGetQuery` function to query with the database using SQL. For example:
+
+```{r example-r-dbquery, eval = F, echo = T}
+
+df.mons  <- dbGetQuery(ch, "SELECT * from air_pollution_monitors.ap_monitor_data_master 
+                       where state = 'SA'
+                       limit 100;")
+
+```
+
+For geospatial work, you can read the locations tables directly into an `sf` or `SpatVector` (`terra`) object through the `rpostgis` package:
+
+```{r example-rpostgis, eval = F, echo = T}
+library(rpostgis)
+# read as sf object
+sf.mons <- rpostgis::pgGetGeom(ch, 
+                               c("air_pollution_monitors", "ap_monitor_locations_act"), 
+                               geom = "geom_gda94",
+                               returnclass = "sf")
+# or as terra SpatVector
+v.mons <- rpostgis::pgGetGeom(ch, 
+                              c("air_pollution_monitors", "ap_monitor_locations_act"), 
+                              geom = "geom_gda94",
+                              returnclass = "terra")
+
+```
+
+
+## Via pgAdmin 4
+
+1. Download and install PGAdmin 4 <https://www.pgadmin.org/download/>
+2. Run PGAdmin 4
+3. In the left sidebar, right-click on `Servers` -> `Create` -> `Server...`
+4. Name the Server in the General Tab
+5. In the Connections tab fill in the following details, replacing <Host name/address>, <Username> and <Password> with the credentials given to you. Then save the changes.
+
+You may then navigate using the tree in the left sidebar. Find the `air_pollution_monitors` schema in the Schemas list.
+
+To run SQL queries, open the Query Tool (`Tools` > `Query Tool` in the top menu, or right-click a schema or table and click `Query Tool`). Run your query with the `Execute/Refresh` button (shortcut key `F5`) above the top-right pane. Save query results with the `Save results to file` button (shortcut key `F8`).
+
+

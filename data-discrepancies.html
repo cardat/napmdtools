@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Using NAPMD | The National Air Pollution Monitoring Database (NAPMD)</title>
-  <meta name="description" content="6 Using NAPMD | The National Air Pollution Monitoring Database (NAPMD)" />
+  <title>7 Data discrepancies | The National Air Pollution Monitoring Database (NAPMD)</title>
+  <meta name="description" content="7 Data discrepancies | The National Air Pollution Monitoring Database (NAPMD)" />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Using NAPMD | The National Air Pollution Monitoring Database (NAPMD)" />
+  <meta property="og:title" content="7 Data discrepancies | The National Air Pollution Monitoring Database (NAPMD)" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Using NAPMD | The National Air Pollution Monitoring Database (NAPMD)" />
+  <meta name="twitter:title" content="7 Data discrepancies | The National Air Pollution Monitoring Database (NAPMD)" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="conditions-of-use.html"/>
-<link rel="next" href="data-discrepancies.html"/>
+<link rel="prev" href="using-napmd.html"/>
+<link rel="next" href="resources-and-links.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -248,37 +248,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-napmd" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">6</span> Using NAPMD<a href="using-napmd.html#using-napmd" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The NAPMD is freely available to researchers. Access is granted individually on <a href="mailto:car.data@curtin.edu.au">request to CARDAT</a> - please put NAPMD access in the subject line to assist with granting access sooner. You will be asked to read and acknowledge <a href="conditions-of-use.html#conditions-of-use">conditions of use and disclaimers</a> prior to being given access.</p>
-<div id="accessing-the-database" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Accessing the database<a href="using-napmd.html#accessing-the-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Users can choose between an API login or a database login. The API allows for easier but less flexible retrieval of data by providing specific parameters (e.g. station ID, parameter name, datetime). Using a database connection is more flexible but requires knowledge of SQL queries. See the <a href="#querying-napmd">Appendix</a> for <code>R</code> (API functions) and <code>SQL</code> (database queries) code snippets.</p>
-<p>Data in NAPMD is subject to change as new, updated or amended data becomes available. We strongly recommend you save a copy of extracted data for your analysis if reproducibility is required.</p>
-</div>
-<div id="cite-the-data-and-report-outcomes" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Cite the data and report outcomes<a href="using-napmd.html#cite-the-data-and-report-outcomes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In your publications using these data please remember to abide by the <a href="conditions-of-use.html#conditions-of-use">conditions of use</a>, in particular:</p>
-<ul>
-<li>cite the National Air Pollution Monitoring Database and acknowledge the CARDAT platform</li>
-<li><a href="mailto:air@epa.tas.gov.au">contact Tas EPA</a> to confirm usage is acceptable (if <a href="conditions-of-use.html#tas-conditions">using Tasmanian data</a>)</li>
-<li>cite the relevant NSW paper (if <a href="conditions-of-use.html#nsw-conditions">using NSW data</a>)</li>
-<li><a href="mailto:car.data@curtin.edu.au">report usage back to us</a> so we can let the relevant state and territory organisations know how their data are being used</li>
-</ul>
-</div>
-<div id="using-the-database" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Using the database<a href="using-napmd.html#using-the-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Air pollution data is stored in the database in tables by state and year. If you are querying the database directly, you will most usually want to access more than one state’s or year’s worth of data at once, which can be done via the following tables:</p>
-<ul>
-<li>ap_monitor_data_master: 1-hrly averaged data</li>
-<li>ap_monitor_data_daily_master: daily averaged data (available where hourly averaged data is not available)</li>
-<li>ap_monitor_locations_master: station location data</li>
-</ul>
-<p>For recent years, most data is available by hour only and is not included in the daily averaged data. The exception is Tasmanian data, which provides daily averages from the BlanKeT network. The daily data table also include historical data that is otherwise not available by hour.</p>
-</div>
-<div id="questions-about-the-data-and-reporting-improbable-values" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Questions about the data, and reporting improbable values<a href="using-napmd.html#questions-about-the-data-and-reporting-improbable-values" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The NAPMD is a collaborative database between the <a href="index.html#acknowledgements">state and territory governments</a>, the <a href="https://safeair.org.au/">Centre for Safe Air</a> and our users. We ask that you <a href="mailto:car.data@curtin.edu.au">contact us</a> with any question about the data or improbable values you find so that we can ensure the data is being used in a fit for purpose manner and is of the highest quality.</p>
+<div id="data-discrepancies" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Data discrepancies<a href="data-discrepancies.html#data-discrepancies" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Data values in NAPMD is generally presented as provided by the state and territory agencies, with alterations made only for formatting and standardisation of units. Values may differ from those currently available from the source agencies if data has been updated since received by NAPMD.</p>
+<p>Please note that though most data has undergone validation by the state and territory agencies, there may be unrealistic or improbable values resulting from instrument failure. Conduct your own data checks and consider what range of values you consider to be reasonable for your pollutant of interest.</p>
+<div id="specific-changes-to-historical-act-data" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Specific changes to historical ACT data<a href="data-discrepancies.html#specific-changes-to-historical-act-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Duplicated hourly data for 2020-02-29</li>
+</ol>
+<p>The duplicate hourly values which are not identical have been averaged.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Exceptionally high NO<sub>2</sub> for Civic station, February 2003</li>
+</ol>
+<p>There were 5 NO2 readings for Civic Feb 2003 which were exceptionally high – these were removed after a discussion with ACT Health and it was agreed that they were improbable and likely caused by a glitch in the equipment (which was serviced shortly after this period).</p>
+<table>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>Hour</th>
+<th>NO2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2003/02/03</td>
+<td>21:00:00</td>
+<td>1.673</td>
+</tr>
+<tr class="even">
+<td>2003/02/03</td>
+<td>17:00:00</td>
+<td>1.348</td>
+</tr>
+<tr class="odd">
+<td>2003/02/03</td>
+<td>18:00:00</td>
+<td>0.958</td>
+</tr>
+<tr class="even">
+<td>2003/02/03</td>
+<td>19:00:00</td>
+<td>0.673</td>
+</tr>
+<tr class="odd">
+<td>2003/02/03</td>
+<td>20:00:00</td>
+<td>0.530</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" style="list-style-type: decimal">
+<li>Spurious nephelometer values in 2011/2012</li>
+</ol>
+<p>There were a series of 0 or 9999 values for nephelometer readings in 2011/2012. ACT stopped measuring visibility around this time, so these values are most likely spurious (in any case, not useful). All of these were dropped.</p>
 
 </div>
 </div>
@@ -287,8 +310,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="conditions-of-use.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-discrepancies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="using-napmd.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="resources-and-links.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
