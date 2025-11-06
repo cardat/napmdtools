@@ -1,0 +1,23 @@
+# Data Dictionary
+
+## Observation data tables
+```{r data-dict-obs}
+dat_dict_obs <- fread("data/ap_monitor_data_master_data_dictionary.csv")
+knitr::kable(dat_dict_obs)
+```
+
+## Location data tables
+
+```{r data-dict-locations}
+dat_dict_locations <- fread("data/ap_monitor_locations_master_data_dictionary.csv")
+
+knitr::kable(dat_dict_locations[State == "all", .(Column, Definition)])
+```
+
+```{r data-dict-locations-ste, results = "asis"}
+for (i in c("act", "nt", "nsw", "qld", "sa", "tas", "wa", "vic")){
+  cat("###", toupper(i), "specific\n\n")
+  
+  print(knitr::kable(dat_dict_locations[State == i, .(Column, Definition)]))
+}
+```

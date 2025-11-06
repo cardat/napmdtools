@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>B Example SQL queries | The National Air Pollution Monitoring Database (NAPMD)</title>
-  <meta name="description" content="B Example SQL queries | The National Air Pollution Monitoring Database (NAPMD)" />
+  <title>5 Data Dictionary | The National Air Pollution Monitoring Database (NAPMD)</title>
+  <meta name="description" content="5 Data Dictionary | The National Air Pollution Monitoring Database (NAPMD)" />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="B Example SQL queries | The National Air Pollution Monitoring Database (NAPMD)" />
+  <meta property="og:title" content="5 Data Dictionary | The National Air Pollution Monitoring Database (NAPMD)" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="B Example SQL queries | The National Air Pollution Monitoring Database (NAPMD)" />
+  <meta name="twitter:title" content="5 Data Dictionary | The National Air Pollution Monitoring Database (NAPMD)" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="connecting-to-napmd.html"/>
-
+<link rel="prev" href="metadata.html"/>
+<link rel="next" href="conditions-of-use.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -266,67 +266,346 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="example-sql-queries" class="section level1 hasAnchor" number="11">
-<h1><span class="header-section-number">B</span> Example SQL queries<a href="example-sql-queries.html#example-sql-queries" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="station-locations-1" class="section level2 hasAnchor" number="11.1">
-<h2><span class="header-section-number">B.1</span> Station locations<a href="example-sql-queries.html#station-locations-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Please note the table include latitude and longitude (EPSG:4283) fields. Geometry is stored using the PostGIS extension in the <code>geom_gda94</code> (EPSG:4283) and <code>geom_albers</code> (EPSG:3577) columns.</p>
-<p>To get specific state/territory information, query the individual state/territory table.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="example-sql-queries.html#cb5-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb5-2"><a href="example-sql-queries.html#cb5-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_nsw</span>
-<span id="cb5-3"><a href="example-sql-queries.html#cb5-3" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
-<p>Or query for all states and territories, retrieving common fields</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb6-1"><a href="example-sql-queries.html#cb6-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb6-2"><a href="example-sql-queries.html#cb6-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_master</span>
-<span id="cb6-3"><a href="example-sql-queries.html#cb6-3" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<div id="data-dictionary" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Data Dictionary<a href="data-dictionary.html#data-dictionary" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="observation-data-tables" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Observation data tables<a href="data-dictionary.html#observation-data-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="84%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Column</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">id</td>
+<td align="left">NAPMD observation record identifier</td>
+</tr>
+<tr class="even">
+<td align="left">station_id</td>
+<td align="left">NAPMD station identifier, linking to the <em>ap_monitor_locations_master</em> table</td>
+</tr>
+<tr class="odd">
+<td align="left">station</td>
+<td align="left">NAPMD station name, as shown in the <em>ap_monitor_locations_master</em> table</td>
+</tr>
+<tr class="even">
+<td align="left">state</td>
+<td align="left">State or territory to which the monitor belongs, as shown in the <em>ap_monitor_locations_master</em> table</td>
+</tr>
+<tr class="odd">
+<td align="left">year</td>
+<td align="left">Year of observation (local non-daylight savings time)</td>
+</tr>
+<tr class="even">
+<td align="left">date</td>
+<td align="left">Date of observation (local non-daylight savings time)</td>
+</tr>
+<tr class="odd">
+<td align="left">hour</td>
+<td align="left">Hour of observation (local non-daylight savings time), marking the beginning of the averaged hour</td>
+</tr>
+<tr class="even">
+<td align="left">date_time_utc</td>
+<td align="left">Timestamp of the observation in UTC timezone (beginning of the averaged hour)</td>
+</tr>
+<tr class="odd">
+<td align="left">variable</td>
+<td align="left">Short-form variable name</td>
+</tr>
+<tr class="even">
+<td align="left">value</td>
+<td align="left">Observed value</td>
+</tr>
+<tr class="odd">
+<td align="left">units</td>
+<td align="left">Unit of observation</td>
+</tr>
+<tr class="even">
+<td align="left">measurement_method</td>
+<td align="left">Method used to measure variable or other particulars</td>
+</tr>
+<tr class="odd">
+<td align="left">time_basis</td>
+<td align="left">Averaging period</td>
+</tr>
+<tr class="even">
+<td align="left">created</td>
+<td align="left">Timestamp of record creation</td>
+</tr>
+<tr class="odd">
+<td align="left">updated</td>
+<td align="left">Timestamp of last update of record</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="query-for-selected-station-locations" class="section level2 hasAnchor" number="11.2">
-<h2><span class="header-section-number">B.2</span> Query for selected station locations<a href="example-sql-queries.html#query-for-selected-station-locations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Get all stations by variable:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb7-1"><a href="example-sql-queries.html#cb7-1" tabindex="-1"></a><span class="kw">SELECT</span> l.<span class="op">*</span> </span>
-<span id="cb7-2"><a href="example-sql-queries.html#cb7-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_master l</span>
-<span id="cb7-3"><a href="example-sql-queries.html#cb7-3" tabindex="-1"></a><span class="kw">WHERE</span> l.station_id <span class="kw">IN</span> </span>
-<span id="cb7-4"><a href="example-sql-queries.html#cb7-4" tabindex="-1"></a>(<span class="kw">SELECT</span> d.station_id </span>
-<span id="cb7-5"><a href="example-sql-queries.html#cb7-5" tabindex="-1"></a> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master d</span>
-<span id="cb7-6"><a href="example-sql-queries.html#cb7-6" tabindex="-1"></a> <span class="kw">WHERE</span> d.variable <span class="op">=</span><span class="st">&#39;co&#39;</span>);</span></code></pre></div>
-<p>Get all stations by year and variable:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb8-1"><a href="example-sql-queries.html#cb8-1" tabindex="-1"></a><span class="kw">SELECT</span> l.<span class="op">*</span> </span>
-<span id="cb8-2"><a href="example-sql-queries.html#cb8-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_master l</span>
-<span id="cb8-3"><a href="example-sql-queries.html#cb8-3" tabindex="-1"></a><span class="kw">WHERE</span> l.station_id <span class="kw">IN</span> </span>
-<span id="cb8-4"><a href="example-sql-queries.html#cb8-4" tabindex="-1"></a>(<span class="kw">SELECT</span> d.station_id </span>
-<span id="cb8-5"><a href="example-sql-queries.html#cb8-5" tabindex="-1"></a> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master d</span>
-<span id="cb8-6"><a href="example-sql-queries.html#cb8-6" tabindex="-1"></a> <span class="kw">WHERE</span> d.<span class="dt">year</span> <span class="op">=</span> <span class="dv">2010</span></span>
-<span id="cb8-7"><a href="example-sql-queries.html#cb8-7" tabindex="-1"></a> <span class="kw">AND</span> d.variable <span class="op">=</span><span class="st">&#39;co&#39;</span>);</span></code></pre></div>
-<p>Get stations by variable, year and state</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb9-1"><a href="example-sql-queries.html#cb9-1" tabindex="-1"></a><span class="kw">SELECT</span> l.<span class="op">*</span> </span>
-<span id="cb9-2"><a href="example-sql-queries.html#cb9-2" tabindex="-1"></a><span class="kw">FROM</span> air_pollution_monitors.ap_monitor_locations_sa l</span>
-<span id="cb9-3"><a href="example-sql-queries.html#cb9-3" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">EXISTS</span> </span>
-<span id="cb9-4"><a href="example-sql-queries.html#cb9-4" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="dv">1</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_sa_2015 d</span>
-<span id="cb9-5"><a href="example-sql-queries.html#cb9-5" tabindex="-1"></a>     <span class="kw">WHERE</span> l.station_id <span class="op">=</span> d.station_id</span>
-<span id="cb9-6"><a href="example-sql-queries.html#cb9-6" tabindex="-1"></a>     <span class="kw">AND</span> d.variable <span class="op">=</span><span class="st">&#39;pm25&#39;</span>)</span>
-<span id="cb9-7"><a href="example-sql-queries.html#cb9-7" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> l.station <span class="kw">DESC</span>;</span></code></pre></div>
+<div id="location-data-tables" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Location data tables<a href="data-dictionary.html#location-data-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="13%" />
+<col width="86%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Column</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">station_id</td>
+<td align="left">Primary key, NAPMD station identifier</td>
+</tr>
+<tr class="even">
+<td align="left">station</td>
+<td align="left">NAPMD station name</td>
+</tr>
+<tr class="odd">
+<td align="left">state</td>
+<td align="left">State or territory to which the monitor belongs (note that some monitors operated by NSW are located within SA and Victorian state boundaries)</td>
+</tr>
+<tr class="even">
+<td align="left">altitude</td>
+<td align="left">Height above sea level (m)</td>
+</tr>
+<tr class="odd">
+<td align="left">lat</td>
+<td align="left">Latitude in decimal degrees (EPSG:4283). Note some monitors may not have published coordinates due to privacy or land owners’ concerns.</td>
+</tr>
+<tr class="even">
+<td align="left">lon</td>
+<td align="left">Longitude in decimal degrees (EPSG:4283). Note some monitors may not have published coordinates due to privacy or land owners’ concerns.</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_gda94</td>
+<td align="left">Spatial vector point locations in GDA94 datum (EPSG:4283)</td>
+</tr>
+<tr class="even">
+<td align="left">geom_albers</td>
+<td align="left">Spatial vector point locations in Australian Albers (EPSG:3577)</td>
+</tr>
+<tr class="odd">
+<td align="left">station_classification</td>
+<td align="left">Station classification info according to the state or territory</td>
+</tr>
+<tr class="even">
+<td align="left">notes</td>
+<td align="left">Additional miscellaneous information</td>
+</tr>
+<tr class="odd">
+<td align="left">created</td>
+<td align="left">Timestamp of record creation</td>
+</tr>
+<tr class="even">
+<td align="left">updated</td>
+<td align="left">Timestamp of last update of record</td>
+</tr>
+</tbody>
+</table>
+<div id="act-specific" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> ACT specific<a href="data-dictionary.html#act-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="23%" />
+<col width="76%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Column</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">source_station_name</td>
+<td align="left">Station name as provided in ACT Air Quality Monitoring Data API</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="observation-data" class="section level2 hasAnchor" number="11.3">
-<h2><span class="header-section-number">B.3</span> Observation data<a href="example-sql-queries.html#observation-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Get hourly data by state and year (fastest to query the child table):</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb10-1"><a href="example-sql-queries.html#cb10-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_wa_2020;</span></code></pre></div>
-<p>Get hourly data by year and variable:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb11-1"><a href="example-sql-queries.html#cb11-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master</span>
-<span id="cb11-2"><a href="example-sql-queries.html#cb11-2" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2020</span></span>
-<span id="cb11-3"><a href="example-sql-queries.html#cb11-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="op">=</span><span class="st">&#39;no2&#39;</span>;</span></code></pre></div>
-<p>Get hourly data by variable and state:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb12-1"><a href="example-sql-queries.html#cb12-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master</span>
-<span id="cb12-2"><a href="example-sql-queries.html#cb12-2" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="op">=</span> <span class="st">&#39;SA&#39;</span></span>
-<span id="cb12-3"><a href="example-sql-queries.html#cb12-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="op">=</span><span class="st">&#39;pm10&#39;</span>;</span></code></pre></div>
-<p>Get hourly data by variable for multiple states:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb13-1"><a href="example-sql-queries.html#cb13-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master</span>
-<span id="cb13-2"><a href="example-sql-queries.html#cb13-2" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="kw">in</span> (<span class="st">&#39;SA&#39;</span>,<span class="st">&#39;VIC&#39;</span>)</span>
-<span id="cb13-3"><a href="example-sql-queries.html#cb13-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="op">=</span><span class="st">&#39;pm10&#39;</span>;</span></code></pre></div>
-<p>Get hourly data by state for multiple variables:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb14-1"><a href="example-sql-queries.html#cb14-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> air_pollution_monitors.ap_monitor_data_master</span>
-<span id="cb14-2"><a href="example-sql-queries.html#cb14-2" tabindex="-1"></a><span class="kw">WHERE</span> state <span class="op">=</span> <span class="st">&#39;ACT&#39;</span></span>
-<span id="cb14-3"><a href="example-sql-queries.html#cb14-3" tabindex="-1"></a><span class="kw">AND</span> variable <span class="kw">in</span> (<span class="st">&#39;no2&#39;</span>,<span class="st">&#39;o3&#39;</span>);<span class="ot">&quot;)</span></span></code></pre></div>
+<div id="nt-specific" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> NT specific<a href="data-dictionary.html#nt-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Column</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">date_of_establishment</td>
+<td align="left">Date of establishment of station</td>
+</tr>
+<tr class="even">
+<td align="left">source_station_id</td>
+<td align="left">Station ID as used in NT data portal</td>
+</tr>
+<tr class="odd">
+<td align="left">source_station_name</td>
+<td align="left">Station name as used in NT data portal</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="nsw-specific" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> NSW specific<a href="data-dictionary.html#nsw-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="34%" />
+<col width="65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Column</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">station_monitoring_region</td>
+<td align="left">Station region as provided in NSW Air quality API</td>
+</tr>
+<tr class="even">
+<td align="left">source_station_id</td>
+<td align="left">Station ID as provided in NSW Air quality API</td>
+</tr>
+<tr class="odd">
+<td align="left">source_station_name</td>
+<td align="left">Station name as provided in NSW Air quality API</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="qld-specific" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> QLD specific<a href="data-dictionary.html#qld-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="22%" />
+<col width="77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Column</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">source_station_id</td>
+<td align="left">Station ID as used in Qld Air Quality Query API</td>
+</tr>
+<tr class="even">
+<td align="left">source_station_name</td>
+<td align="left">Station name as used on Qld Open Data Portal</td>
+</tr>
+<tr class="odd">
+<td align="left">region</td>
+<td align="left">Station region abbreviation as provided in Qld Air Quality Query API</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="sa-specific" class="section level3 hasAnchor" number="5.2.5">
+<h3><span class="header-section-number">5.2.5</span> SA specific<a href="data-dictionary.html#sa-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="27%" />
+<col width="72%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Column</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">source_station_name</td>
+<td align="left">Station name as provided in SA monitor locations file</td>
+</tr>
+<tr class="even">
+<td align="left">source_station_id</td>
+<td align="left">Station ID as used in SA data filenames</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tas-specific" class="section level3 hasAnchor" number="5.2.6">
+<h3><span class="header-section-number">5.2.6</span> TAS specific<a href="data-dictionary.html#tas-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="27%" />
+<col width="72%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Column</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">source_station_id</td>
+<td align="left">Station ID as shown in Tasmanian live particle data</td>
+</tr>
+<tr class="even">
+<td align="left">source_station_name</td>
+<td align="left">Station name as shown in Tasmanian live particle data</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="wa-specific" class="section level3 hasAnchor" number="5.2.7">
+<h3><span class="header-section-number">5.2.7</span> WA specific<a href="data-dictionary.html#wa-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Column</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">source_station_name</td>
+<td align="left">Station name as provided in WA data files</td>
+</tr>
+<tr class="even">
+<td align="left">source_station_id</td>
+<td align="left">Station ID as provided in WA data filenames</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="vic-specific" class="section level3 hasAnchor" number="5.2.8">
+<h3><span class="header-section-number">5.2.8</span> VIC specific<a href="data-dictionary.html#vic-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Column</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">source_station_id</td>
+<td align="left">Station ID as provided in Victorian data</td>
+</tr>
+<tr class="even">
+<td align="left">source_station_name</td>
+<td align="left">Station name as provided in Victorian data</td>
+</tr>
+</tbody>
+</table>
 
+</div>
 </div>
 </div>
             </section>
@@ -334,8 +613,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="connecting-to-napmd.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="metadata.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conditions-of-use.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
