@@ -1,5 +1,9 @@
 # News
 
+## 2025-10-20
+
+ - Added 2009 data for Queensland
+
 ## 2025-07-23
 
  - Amended data for ACT, replacing misidentified rolling means with 1-hrly averaged data
