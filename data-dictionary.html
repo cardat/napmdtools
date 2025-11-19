@@ -199,16 +199,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="data-dictionary.html"><a href="data-dictionary.html"><i class="fa fa-check"></i><b>5</b> Data Dictionary</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="data-dictionary.html"><a href="data-dictionary.html#hourly-observation-data-tables"><i class="fa fa-check"></i><b>5.1</b> Hourly observation data tables</a></li>
-<li class="chapter" data-level="5.2" data-path="data-dictionary.html"><a href="data-dictionary.html#location-data-tables"><i class="fa fa-check"></i><b>5.2</b> Location data tables</a>
+<li class="chapter" data-level="5.2" data-path="data-dictionary.html"><a href="data-dictionary.html#daily-observation-data-tables"><i class="fa fa-check"></i><b>5.2</b> Daily observation data tables</a></li>
+<li class="chapter" data-level="5.3" data-path="data-dictionary.html"><a href="data-dictionary.html#location-data-tables"><i class="fa fa-check"></i><b>5.3</b> Location data tables</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="data-dictionary.html"><a href="data-dictionary.html#act-specific"><i class="fa fa-check"></i><b>5.2.1</b> ACT specific</a></li>
-<li class="chapter" data-level="5.2.2" data-path="data-dictionary.html"><a href="data-dictionary.html#nt-specific"><i class="fa fa-check"></i><b>5.2.2</b> NT specific</a></li>
-<li class="chapter" data-level="5.2.3" data-path="data-dictionary.html"><a href="data-dictionary.html#nsw-specific"><i class="fa fa-check"></i><b>5.2.3</b> NSW specific</a></li>
-<li class="chapter" data-level="5.2.4" data-path="data-dictionary.html"><a href="data-dictionary.html#qld-specific"><i class="fa fa-check"></i><b>5.2.4</b> QLD specific</a></li>
-<li class="chapter" data-level="5.2.5" data-path="data-dictionary.html"><a href="data-dictionary.html#sa-specific"><i class="fa fa-check"></i><b>5.2.5</b> SA specific</a></li>
-<li class="chapter" data-level="5.2.6" data-path="data-dictionary.html"><a href="data-dictionary.html#tas-specific"><i class="fa fa-check"></i><b>5.2.6</b> TAS specific</a></li>
-<li class="chapter" data-level="5.2.7" data-path="data-dictionary.html"><a href="data-dictionary.html#wa-specific"><i class="fa fa-check"></i><b>5.2.7</b> WA specific</a></li>
-<li class="chapter" data-level="5.2.8" data-path="data-dictionary.html"><a href="data-dictionary.html#vic-specific"><i class="fa fa-check"></i><b>5.2.8</b> VIC specific</a></li>
+<li class="chapter" data-level="5.3.1" data-path="data-dictionary.html"><a href="data-dictionary.html#act-specific"><i class="fa fa-check"></i><b>5.3.1</b> ACT specific</a></li>
+<li class="chapter" data-level="5.3.2" data-path="data-dictionary.html"><a href="data-dictionary.html#nt-specific"><i class="fa fa-check"></i><b>5.3.2</b> NT specific</a></li>
+<li class="chapter" data-level="5.3.3" data-path="data-dictionary.html"><a href="data-dictionary.html#nsw-specific"><i class="fa fa-check"></i><b>5.3.3</b> NSW specific</a></li>
+<li class="chapter" data-level="5.3.4" data-path="data-dictionary.html"><a href="data-dictionary.html#qld-specific"><i class="fa fa-check"></i><b>5.3.4</b> QLD specific</a></li>
+<li class="chapter" data-level="5.3.5" data-path="data-dictionary.html"><a href="data-dictionary.html#sa-specific"><i class="fa fa-check"></i><b>5.3.5</b> SA specific</a></li>
+<li class="chapter" data-level="5.3.6" data-path="data-dictionary.html"><a href="data-dictionary.html#tas-specific"><i class="fa fa-check"></i><b>5.3.6</b> TAS specific</a></li>
+<li class="chapter" data-level="5.3.7" data-path="data-dictionary.html"><a href="data-dictionary.html#wa-specific"><i class="fa fa-check"></i><b>5.3.7</b> WA specific</a></li>
+<li class="chapter" data-level="5.3.8" data-path="data-dictionary.html"><a href="data-dictionary.html#vic-specific"><i class="fa fa-check"></i><b>5.3.8</b> VIC specific</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conditions-of-use.html"><a href="conditions-of-use.html"><i class="fa fa-check"></i><b>6</b> Conditions of use</a>
@@ -346,8 +347,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="location-data-tables" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Location data tables<a href="data-dictionary.html#location-data-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="daily-observation-data-tables" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Daily observation data tables<a href="data-dictionary.html#daily-observation-data-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="84%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Column</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">id</td>
+<td align="left">NAPMD observation record identifier</td>
+</tr>
+<tr class="even">
+<td align="left">station_id</td>
+<td align="left">NAPMD station identifier, linking to the <em>ap_monitor_locations_master</em> table</td>
+</tr>
+<tr class="odd">
+<td align="left">station</td>
+<td align="left">NAPMD station name, as shown in the <em>ap_monitor_locations_master</em> table</td>
+</tr>
+<tr class="even">
+<td align="left">state</td>
+<td align="left">State or territory to which the monitor belongs, as shown in the <em>ap_monitor_locations_master</em> table</td>
+</tr>
+<tr class="odd">
+<td align="left">year</td>
+<td align="left">Year of observation (local non-daylight savings time)</td>
+</tr>
+<tr class="even">
+<td align="left">date</td>
+<td align="left">Date of observation (local non-daylight savings time)</td>
+</tr>
+<tr class="odd">
+<td align="left">date_time_utc</td>
+<td align="left">Timestamp with local date and hour set to 0 in UTC timezone</td>
+</tr>
+<tr class="even">
+<td align="left">variable</td>
+<td align="left">Short-form variable name</td>
+</tr>
+<tr class="odd">
+<td align="left">value</td>
+<td align="left">Observed value</td>
+</tr>
+<tr class="even">
+<td align="left">units</td>
+<td align="left">Unit of observation</td>
+</tr>
+<tr class="odd">
+<td align="left">measurement_method</td>
+<td align="left">Method used to measure variable or other particulars</td>
+</tr>
+<tr class="even">
+<td align="left">time_basis</td>
+<td align="left">Averaging period</td>
+</tr>
+<tr class="odd">
+<td align="left">created</td>
+<td align="left">Timestamp of record creation</td>
+</tr>
+<tr class="even">
+<td align="left">updated</td>
+<td align="left">Timestamp of last update of record</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="location-data-tables" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Location data tables<a href="data-dictionary.html#location-data-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <colgroup>
 <col width="13%" />
@@ -410,8 +484,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div id="act-specific" class="section level3 hasAnchor" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> ACT specific<a href="data-dictionary.html#act-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="act-specific" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> ACT specific<a href="data-dictionary.html#act-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
 <col width="23%" />
@@ -431,8 +505,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="nt-specific" class="section level3 hasAnchor" number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> NT specific<a href="data-dictionary.html#nt-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="nt-specific" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> NT specific<a href="data-dictionary.html#nt-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <thead>
 <tr class="header">
@@ -456,8 +530,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="nsw-specific" class="section level3 hasAnchor" number="5.2.3">
-<h3><span class="header-section-number">5.2.3</span> NSW specific<a href="data-dictionary.html#nsw-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="nsw-specific" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> NSW specific<a href="data-dictionary.html#nsw-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
 <col width="34%" />
@@ -485,8 +559,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="qld-specific" class="section level3 hasAnchor" number="5.2.4">
-<h3><span class="header-section-number">5.2.4</span> QLD specific<a href="data-dictionary.html#qld-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="qld-specific" class="section level3 hasAnchor" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> QLD specific<a href="data-dictionary.html#qld-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
 <col width="22%" />
@@ -514,8 +588,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="sa-specific" class="section level3 hasAnchor" number="5.2.5">
-<h3><span class="header-section-number">5.2.5</span> SA specific<a href="data-dictionary.html#sa-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="sa-specific" class="section level3 hasAnchor" number="5.3.5">
+<h3><span class="header-section-number">5.3.5</span> SA specific<a href="data-dictionary.html#sa-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
 <col width="27%" />
@@ -539,8 +613,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="tas-specific" class="section level3 hasAnchor" number="5.2.6">
-<h3><span class="header-section-number">5.2.6</span> TAS specific<a href="data-dictionary.html#tas-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="tas-specific" class="section level3 hasAnchor" number="5.3.6">
+<h3><span class="header-section-number">5.3.6</span> TAS specific<a href="data-dictionary.html#tas-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
 <col width="27%" />
@@ -564,8 +638,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="wa-specific" class="section level3 hasAnchor" number="5.2.7">
-<h3><span class="header-section-number">5.2.7</span> WA specific<a href="data-dictionary.html#wa-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="wa-specific" class="section level3 hasAnchor" number="5.3.7">
+<h3><span class="header-section-number">5.3.7</span> WA specific<a href="data-dictionary.html#wa-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <thead>
 <tr class="header">
@@ -585,8 +659,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="vic-specific" class="section level3 hasAnchor" number="5.2.8">
-<h3><span class="header-section-number">5.2.8</span> VIC specific<a href="data-dictionary.html#vic-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="vic-specific" class="section level3 hasAnchor" number="5.3.8">
+<h3><span class="header-section-number">5.3.8</span> VIC specific<a href="data-dictionary.html#vic-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <thead>
 <tr class="header">

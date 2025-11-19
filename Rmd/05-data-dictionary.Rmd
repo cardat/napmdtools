@@ -6,6 +6,12 @@ dat_dict_obs <- fread("data/ap_monitor_data_master_data_dictionary.csv")
 knitr::kable(dat_dict_obs)
 ```
 
+## Daily observation data tables
+```{r data-dict-dly-obs}
+dat_dict_dly_obs <- fread("data/ap_monitor_data_daily_master_data_dictionary.csv")
+knitr::kable(dat_dict_dly_obs)
+```
+
 ## Location data tables
 
 ```{r data-dict-locations}

@@ -30,6 +30,7 @@ station-names
 station-locations
 data-dictionary
 hourly-observation-data-tables
+daily-observation-data-tables
 location-data-tables
 act-specific
 nt-specific
