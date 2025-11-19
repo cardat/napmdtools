@@ -2,7 +2,9 @@
 
 Data values in NAPMD is generally presented as provided by the state and territory agencies, with alterations made only for formatting and standardisation of units. Values may differ from those currently available from the source agencies if data has been updated since received by NAPMD.
 
-Please note that though most data has undergone validation by the state and territory agencies, there may be unrealistic or improbable values resulting from instrument failure. Conduct your own data checks and consider what range of values you consider to be reasonable for your pollutant of interest.
+Please note that though most data has undergone validation by the state and territory agencies, there may be unrealistic or improbable values present. Some values are clearly incorrect (for example, air pressure readings well beyond the typical 980-1100 hPa range) but others may be indicative of an unusual event (for instance, a dust storm).
+
+Conduct your own data checks and consider what range of values you consider to be reasonable for your pollutant of interest.
 
 ## Specific changes to historical ACT data
 

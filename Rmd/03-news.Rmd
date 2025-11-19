@@ -1,5 +1,17 @@
 # News
 
+## 2025-11-18
+
+ - Added 2023 and 2024 data for all states
+ - Amendments to date and time fields
+    - Fixed incorrect *date_time_utc* UTC timestamps for Victorian observations for 2021 and 2022 data
+    - Fixed incorrect *date* and *hour* fields for NSW 2018 hourly observations (hour incorrectly specified one hour early) - previously labelled with local time between 2007-12-31 23:00 to 2008-12-31 21:00
+    - Fixed incorrect *year* labels for the last hour of each year in the hourly observation tables for NSW, NT, SA
+        - incorrect year is that of the following year (e.g. 1995-12-31 23:00 was incorrectly labelled as year = 1996)
+ - Alignment with standard variable and unit naming
+    - Amendment of *variable* 'wind_dir_stddev' to 'wind_direction_std_dev' and *units* 'w/m*' to 'W_per_m2' for WA 2021-2022 observation data
+    - Amendment of *variable* 'solar_radiation' to 'solar' for NT 2020-2022 observation data
+
 ## 2025-10-20
 
  - Added 2009 data for Queensland

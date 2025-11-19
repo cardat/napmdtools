@@ -2,7 +2,10 @@
 
 **The National Air Pollution Monitoring Database data are not to be on-shared without permission from the Centre for Safe Air.**
 
-Whenever you use this dataset in your research, please **include your publications 1) an acknowledgement of the CARDAT platform** (a suggested wording can be found [here][cardat-acknowledgements]) and **2) citation of the dataset itself**:
+Whenever you use this dataset in your research, please include your publications
+
+1. an **acknowledgement of the CARDAT platform** (a suggested wording can be found [here][cardat-acknowledgements]), and 
+2. **citation of the dataset** itself:
 
 > Centre for Safe Air, 2021. National
 > Air Pollution Monitoring Database, derived from regulatory monitor
@@ -12,6 +15,7 @@ Whenever you use this dataset in your research, please **include your publicatio
 
 We would greatly appreciate being informed ([email us!][cardat-email]) of any publications as this helps us to track usage and report back to the contributing agencies.
 
+---- 
 
 Note the data has been provided by Australian state and territory governments, and are therefore subject to differing licences, conditions of use and disclaimers. When using data **please abide by the the relevant licensing and conditions of use set out by each agency**, in addition to the conditions of use of NAPMD above. 
 

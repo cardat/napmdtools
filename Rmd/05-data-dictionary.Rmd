@@ -1,6 +1,6 @@
 # Data Dictionary
 
-## Observation data tables
+## Hourly observation data tables
 ```{r data-dict-obs}
 dat_dict_obs <- fread("data/ap_monitor_data_master_data_dictionary.csv")
 knitr::kable(dat_dict_obs)

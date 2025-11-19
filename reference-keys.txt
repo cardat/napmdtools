@@ -14,9 +14,10 @@ section-1
 section-2
 section-3
 section-4
-archived
 section-5
+archived
 section-6
+section-7
 metadata
 spatial-coverage
 temporal-coverage
@@ -28,7 +29,7 @@ time-basis-hour-endingstarting
 station-names
 station-locations
 data-dictionary
-observation-data-tables
+hourly-observation-data-tables
 location-data-tables
 act-specific
 nt-specific
