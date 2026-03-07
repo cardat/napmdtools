@@ -20,25 +20,35 @@ get_monitor <- function(station_id = 453,
                         password = api_key$password) {
   
   # Default retrieve data for station 3, PM2.5, an annual slice
-  req <- httr::GET("https://napmd.cloud.car-dat.org/get_monitor",query=list(station_id=station_id,
-                                                             variable=variable,
-                                                             start_time_utc = start_time_utc,
-                                                             end_time_utc = end_time_utc,
-                                                             username=username, 
-                                                             password=password,
-                                                             datatype="JSON"))
-  # catch if error
-  if(req$status_code != 200){
-    parse_data <- httr::content(req,as="parsed")
-    warning(sprintf("%s: %s", req$status_code, parse_data$error))
+  req <- httr2::request("https://napmd.cloud.car-dat.org/") |>
+    httr2::req_url_path_append("get_monitor") |>
+    httr2::req_url_query(
+      station_id=station_id,
+      variable=variable,
+      start_time_utc = start_time_utc,
+      end_time_utc = end_time_utc,
+      username = username,
+      password = password,
+      datatype = "JSON"
+    ) |>
+    httr2::req_error(is_error = \(resp) FALSE) |>
+    httr2::req_retry(max_tries = 5)
+  
+  resp <- httr2::req_perform(req)
+  
+  # catch if error, display message
+  if (httr2::resp_is_error(resp)) {
+    parse_data <- httr2::resp_body_json(resp)
+    warning(sprintf("Error %s: %s", resp$status_code, parse_data$error))
     return(NULL)
   }
   
-  req <- httr::content(req,as="parsed")
-  
-  data <- data.table::rbindlist(req,fill=TRUE)
-  data$date_time_utc <- as.POSIXct(data$date_time_utc, 
+  dat_resp <- httr2::resp_body_json(resp)
+  dat <- data.table::rbindlist(dat_resp, fill = TRUE)
+  dat[, date := as.Date(date)]
+  dat[, date_time_utc := as.POSIXct(date_time_utc, 
                                    tz = "UTC", 
-                                   format = "%Y-%m-%d %H:%M:%S")
-  return(data)
+                                   format = "%Y-%m-%d %H:%M:%S")]
+  
+  return(dat)
 }
