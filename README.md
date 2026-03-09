@@ -17,9 +17,9 @@ vignette("napmd_ap_monitors_with_obs")
 Acknowledgements:
 ---
 
-The Australian National Air Pollution Monitor Database (NAPMD) was consolidated by the NHMRC Centre for Air pollution, Energy and Health Research (CAR) to standardise the national collection of data from all government air pollution monitors in Australia. All states and all pollutants for government regulatory monitoring data were collected from the 1990s to 2020. For more information see https://osf.io/jxd98/wiki/Metadata/
+The Australian National Air Pollution Monitor Database (NAPMD) was consolidated by the NHMRC Centre for Air pollution, Energy and Health Research (CAR) to standardise the national collection of data from all government air pollution monitors in Australia. All states and all pollutants for government regulatory monitoring data were collected from the 1990s to 2020. For more information see the [napmdtools GitHub Pages](https://cardat.github.io/napmdtools/).
 
-Centre for Air pollution, energy and health Research (2021): National Air Pollution Monitoring Database, derived from regulatory monitor data from NSW DPIE, Vic EPA, Qld DES, SA EPA, WA DEWR, Tas EPA, NT EPA, and ACT Health. The Centre for Air pollution, energy and health Research. (Dataset) DOI 10.17605/OSF.IO/JXD98
+>Centre for Safe Air, 2021. National Air Pollution Monitoring Database, derived from regulatory monitor data from NSW DPE, Vic EPA, Qld DES, SA EPA, WA DWER, Tas EPA, NT EPA, and ACT Health. Downloaded from the Centre for Safe Air [accessed YYYY-MM-DD] DOI 10.17605/OSF.IO/JXD98
 
 ## Instructions for using API key
 
@@ -37,3 +37,7 @@ password: 'my_password'
 4. use this to read it into your session `api_key <- yaml::read_yaml('private/api_key.yaml')`
 5. use this in the functions, e.g.
     `list_air_pollution_monitors(state = "NSW", username = api_key$username, password = api_key$password)`
+
+## Changelog
+
+**v0.2.0**: Revision to use httr2 instead of httr and handling of error 500; Format of date and date_time_utc formats to correct type (Date, POSIXct)

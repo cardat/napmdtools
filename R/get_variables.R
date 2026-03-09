@@ -14,20 +14,30 @@ get_variables <- function(
     username = api_key$username,
     password = api_key$password
 ){
-  # Retrieve varibles for station 3
-  req <- httr::GET("https://napmd.cloud.car-dat.org/get_variables",query=list(station_id=station_id,
-                                                                             username=username, 
-                                                                             password=password,
-                                                                             datatype="JSON"))
+  # Retrieve variables for station
+  req <- httr2::request("https://napmd.cloud.car-dat.org/") |>
+    httr2::req_url_path_append("get_variables") |>
+    httr2::req_url_query(
+      station_id=station_id,
+      username=username, 
+      password=password,
+      datatype="JSON"
+    ) |>
+    httr2::req_error(is_error = \(resp) FALSE) |>
+    httr2::req_retry(max_tries = 5, 
+                     is_transient = \(resp) httr2::resp_status(resp) %in% c(429, 500, 503))
   
-  # catch if error
-  if(req$status_code != 200){
-    parse_data <- httr::content(req,as="parsed")
-    warning(sprintf("%s: %s", req$status_code, parse_data$error))
+  resp <- httr2::req_perform(req)
+  
+  # catch if error, display message
+  if (httr2::resp_is_error(resp)) {
+    parse_data <- httr2::resp_body_json(resp)
+    warning(sprintf("Error %s: %s", resp$status_code, parse_data$error))
     return(NULL)
   }
   
-  req <- httr::content(req,as="parsed")
-  st_vars <- data.table::rbindlist(req,fill=TRUE)
-  return(st_vars)
+  dat_resp <- httr2::resp_body_json(resp)
+  dat <- data.table::rbindlist(dat_resp, fill = TRUE)
+  
+  return(dat)
 }
