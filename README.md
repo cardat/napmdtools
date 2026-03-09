@@ -38,6 +38,6 @@ password: 'my_password'
 5. use this in the functions, e.g.
     `list_air_pollution_monitors(state = "NSW", username = api_key$username, password = api_key$password)`
 
-## Package updates
+## Changelog
 
-**v0.2.0**: Revision to use httr2 instead of httr; Format of date and date_time_utc formats to correct type (Date, POSIXct)
+**v0.2.0**: Revision to use httr2 instead of httr and handling of error 500; Format of date and date_time_utc formats to correct type (Date, POSIXct)

@@ -24,7 +24,8 @@ get_variables_daily <- function(
       datatype="JSON"
     ) |>
     httr2::req_error(is_error = \(resp) FALSE) |>
-    httr2::req_retry(max_tries = 5)
+    httr2::req_retry(max_tries = 5, 
+                     is_transient = \(resp) httr2::resp_status(resp) %in% c(429, 500, 503))
   
   resp <- httr2::req_perform(req)
   

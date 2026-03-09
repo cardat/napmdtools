@@ -24,7 +24,8 @@ get_variables <- function(
       datatype="JSON"
     ) |>
     httr2::req_error(is_error = \(resp) FALSE) |>
-    httr2::req_retry(max_tries = 5)
+    httr2::req_retry(max_tries = 5, 
+                     is_transient = \(resp) httr2::resp_status(resp) %in% c(429, 500, 503))
   
   resp <- httr2::req_perform(req)
   
@@ -40,18 +41,3 @@ get_variables <- function(
   
   return(dat)
 }
-
-
-
-
-# catch if error, display message
-if (httr2::resp_is_error(resp)) {
-  parse_data <- httr2::resp_body_json(resp)
-  warning(sprintf("Error %s: %s", resp$status_code, parse_data$error))
-  return(NULL)
-}
-
-dat_resp <- httr2::resp_body_json(resp)
-dat <- data.table::rbindlist(dat_resp, fill = TRUE)
-
-return(dat)
